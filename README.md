@@ -6,7 +6,7 @@ I'm currently a Master of Science in Computer Science (MSCS) student at Yale Uni
 
 With this in mind, my project aims to build up a flexible code base in areas like prompt tuning, instruction tuning, Parameter-Efficient Fine-Tuning (PEFT), Mixture of Experts (MoE), and Retrieval-Augmented Generation (RAG), among others. One interesting observation is that these methods often share similarities in their implementation pipelines and evaluation metrics. Additionally, the variety of open-source models readily available for these kinds of tasks is somewhat limited. Hope this would help all of us make it through.
 
-The goal of this project is to develop a comprehensive pipeline that facilitates smaller-scale experiments and enhances understanding of LLMs. This will include thorough documentation and well-structured, objective-oriented code modules, designed to be accessible and useful for fellow researchers and enthusiasts in the field.
+The goal of this project is to develop a comprehensive pipeline that facilitates smaller-scale experiments and enhances understanding of LLMs for beginners. This will include thorough documentation and well-structured, objective-oriented code modules, designed to be accessible and useful for fellow researchers and enthusiasts in the field.
 
 ## Preliminary Plan
 ### Model
