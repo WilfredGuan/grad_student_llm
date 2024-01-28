@@ -1,44 +1,60 @@
-from data.loader import *
-from data.constructor import *
-
 from model.model import *
-from model.trainer import *
-from model.evaluator import *
-
-from transformers import AutoModelForCausalLM, AutoTokenizer, MistralForCausalLM
+from model.dataclass import *
 from log.llm_logger import LLMLogger
 
-# Arguments
-logger = LLMLogger("./log")
-print("Logger Initialized:", logger)
+from argparse import ArgumentParser
+from accelerate import Accelerator, DistributedDataParallelKwargs
 
-model_arguemnts = ModelArguments(
-    model_name_or_path="mistralai/Mistral-7B-Instruct-v0.2"
-)
-print("Model Arguments Initialized:", model_arguemnts)
+if __name__ == "__main__":
+    kwargs_handlers = [DistributedDataParallelKwargs(find_unused_parameters=True)]
+    print("Using accelerator:", kwargs_handlers)
+    accelerator = Accelerator(mixed_precision="bf16", kwargs_handlers=kwargs_handlers)
 
-data_arguments = DataArguments(data_path="models/grad_std_llm/data/GSM8K/test.jsonl")
-print("Data Arguments Initialized:", data_arguments)
+    """
+    parser = ArgumentParser()
+    parser.add_argument("--logdir", type=str, default="")
+    """
 
-training_arguments = TrainArguments(output_dir="models/grad_std_llm/test_dir/")
-print("Training Arguments Initialized:", training_arguments)
+    # Arguments
+    logger = LLMLogger("./log")
+    # print("Logger Initialized:", logger)
 
+    model_arguemnts = ModelArguments(
+        model_name_or_path="mistralai/Mistral-7B-Instruct-v0.2",
+        device=accelerator.device,
+    )
+    # print("Model Arguments Initialized:", model_arguemnts)
 
-# data
-# = GSM8KLoader(data_path, batch_size=1, shuffle=True)
+    data_arguments = DataArguments(
+        data_path="./data/GSM8K/test.jsonl",
+        dataloader="GSM8KLoader",
+        constructor="GSM8KConstructor",
+    )
+    # print("Data Arguments Initialized:", data_arguments)
 
-# Load Model
-model = ModelBase(
-    ModelArguments,
-    DataArguments,
-    TrainArguments,
-)
+    # train_arguments = TrainArguments()
+    # print("Training Arguments Initialized:", train_eval_arguments)
 
+    eval_arguments = EvalArguments(
+        evaluator_name="HumanEval",
+    )
 
-# train
+    # Load Model
+    model = ModelBase(
+        model_arguemnts=model_arguemnts,
+        data_arguments=data_arguments,
+        # train_arguments=train_arguments,
+        eval_arguments=eval_arguments,
+        logger=logger,
+        accelerator=accelerator,
+    )
 
-# eval
+    # train
+    # model.train()
 
-# show result
-logger.close()
-logger.draw_result()
+    # eval
+    model.eval()
+
+    # show result
+    logger.close()
+    logger.show_result()

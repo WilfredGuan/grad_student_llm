@@ -3,7 +3,7 @@ import json
 import re
 
 
-class Loader:
+class DataLoader:
     def __init__(self, data, data_name, data_path, batch_size):
         self.data = data
         self.data_name = data_name
@@ -38,16 +38,17 @@ class Loader:
         return self.__iter__().__next__()
 
 
-class GSM8KLoader(Loader):
+class GSM8KLoader(DataLoader):
     def __init__(self, data_path, batch_size):
         super().__init__(
-            data=self.get_data(data_path),
+            data=self._get_data(data_path),
             data_name="GSM8K",
             data_path=data_path,
             batch_size=batch_size,
         )
+        self.train_data, self.test_data = self._split(self.data)
 
-    def get_data(self, data_path):
+    def _get_data(self, data_path):
         retlist = []
         with open(data_path) as fp:
             lines = fp.readlines()
@@ -60,6 +61,12 @@ class GSM8KLoader(Loader):
         # print("Number of examples:", len(retlist))
         # print("Example:", retlist[0])
         return retlist
+
+    def _split(self, data, split_ratio=0.8):
+        split_idx = int(len(data) * split_ratio)
+        train_data = data[:split_idx]
+        test_data = data[split_idx:]
+        return train_data, test_data
 
 
 if __name__ == "__main__":

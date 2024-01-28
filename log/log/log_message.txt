@@ -1,6 +1,0 @@
---------------------
-Train and log at 22:55:41
-test
---------------------
-Train and log at 23:03:45
-test

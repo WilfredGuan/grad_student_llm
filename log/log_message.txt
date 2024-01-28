@@ -12,3 +12,1127 @@ Train and log at 18:17:13
 Train and log at 18:20:57
 --------------------
 Train and log at 18:21:26
+--------------------
+Train and log at 22:10:23
+--------------------
+Train and log at 22:10:56
+--------------------
+Train and log at 22:11:31
+--------------------
+Train and log at 22:11:50
+--------------------
+Train and log at 22:14:48
+--------------------
+Train and log at 22:17:02
+--------------------
+Train and log at 22:19:08
+--------------------
+Train and log at 22:19:50
+--------------------
+Train and log at 22:19:57
+--------------------
+Train and log at 22:22:55
+--------------------
+Train and log at 22:23:29
+--------------------
+Train and log at 22:24:23
+--------------------
+Train and log at 22:25:32
+--------------------
+Train and log at 22:26:04
+--------------------
+Train and log at 22:27:40
+--------------------
+Train and log at 22:30:10
+--------------------
+Train and log at 22:34:42
+--------------------
+Train and log at 22:35:06
+--------------------
+Train and log at 22:37:15
+--------------------
+Train and log at 22:38:07
+--------------------
+Train and log at 22:38:48
+ModelTrainer initialized
+Using <|EOT|> as EOT token
+Using -100 as IGNORE_INDEX
+
+--------------------
+Train and log at 22:41:05
+ModelTrainer initialized
+Using <|EOT|> as EOT token
+Using -100 as IGNORE_INDEX
+
+Split queries - 
+[Test set] 264
+[Query number] 264
+[Raw answer number] 264
+[Numeric answer number] 264
+
+Construct - 
+[Number of shots] 0
+[Prompt used] You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.
+
+--------------------
+Train and log at 22:43:56
+ModelTrainer initialized
+Using <|EOT|> as EOT token
+Using -100 as IGNORE_INDEX
+
+Split queries - 
+[Test set] 264
+[Query number] 264
+[Raw answer number] 264
+[Numeric answer number] 264
+
+Construct - 
+[Number of shots] 0
+[Prompt used] You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.
+
+----------
+Example index: 0
+[Raw question] James has to buy insurance.  Since he had an accident it was 60% more than normal.  The normal cost is $120 a month.  How much does he pay a year?
+[Prompted question] [{'role': 'user', 'content': "You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.\n\nJames has to buy insurance.  Since he had an accident it was 60% more than normal.  The normal cost is $120 a month.  How much does he pay a year?\n"}]
+[True numeric answer] 2304
+[Model answer] <s> [INST] You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.
+
+James has to buy insurance.  Since he had an accident it was 60% more than normal.  The normal cost is $120 a month.  How much does he pay a year?
+ [/INST] Step 1: Find the cost of the increased insurance per month.
+The normal cost is $120 a month. An increase of 60% is equivalent to adding 0.6 * $120 = $72.
+
+Step 2: Find the cost of the increased insurance per year.
+There are 12 months in a year, so the cost per year is 12 * $192 = $2304.
+
+Answer: YOUR_NUMBER = $2304.</s>
+[True or false] False
+
+Accuracy: 0.0
+--------------------
+Train and log at 21:33:08
+--------------------
+Train and log at 21:33:46
+--------------------
+Train and log at 21:35:26
+--------------------
+Train and log at 21:35:51
+--------------------
+Train and log at 21:37:11
+--------------------
+Train and log at 21:42:13
+--------------------
+Train and log at 21:45:18
+--------------------
+Train and log at 21:47:04
+--------------------
+Train and log at 21:49:46
+--------------------
+Train and log at 21:50:11
+ModelTrainer initialized
+Using <|EOT|> as EOT token
+Using -100 as IGNORE_INDEX
+
+Split queries - 
+[Test set] 264
+[Query number] 264
+[Raw answer number] 264
+[Numeric answer number] 264
+
+Construct - 
+[Number of shots] 0
+[Prompt used] You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.
+
+--------------------
+Train and log at 21:52:57
+ModelTrainer initialized
+Using <|EOT|> as EOT token
+Using -100 as IGNORE_INDEX
+
+Split queries - 
+[Test set] 264
+[Query number] 264
+[Raw answer number] 264
+[Numeric answer number] 264
+
+Construct - 
+[Number of shots] 0
+[Prompt used] You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.
+
+--------------------
+Train and log at 21:54:19
+ModelTrainer initialized
+Using <|EOT|> as EOT token
+Using -100 as IGNORE_INDEX
+
+Split queries - 
+[Test set] 264
+[Query number] 264
+[Raw answer number] 264
+[Numeric answer number] 264
+
+Construct - 
+[Number of shots] 0
+[Prompt used] You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.
+
+--------------------
+Train and log at 18:33:55
+ModelTrainer initialized
+Using <|EOT|> as EOT token
+Using -100 as IGNORE_INDEX
+
+Split queries - 
+[Test set] 264
+[Query number] 264
+[Raw answer number] 264
+[Numeric answer number] 264
+
+Construct - 
+[Number of shots] 0
+[Prompt used] You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.
+
+--------------------
+Train and log at 18:36:10
+ModelTrainer initialized
+Using <|EOT|> as EOT token
+Using -100 as IGNORE_INDEX
+
+Split queries - 
+[Test set] 264
+[Query number] 264
+[Raw answer number] 264
+[Numeric answer number] 264
+
+Construct - 
+[Number of shots] 0
+[Prompt used] You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.
+
+--------------------
+Train and log at 18:42:21
+ModelTrainer initialized
+Using <|EOT|> as EOT token
+Using -100 as IGNORE_INDEX
+
+Split queries - 
+[Test set] 264
+[Query number] 264
+[Raw answer number] 264
+[Numeric answer number] 264
+
+Construct - 
+[Number of shots] 0
+[Prompt used] You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.
+
+--------------------
+Train and log at 18:44:18
+ModelTrainer initialized
+Using <|EOT|> as EOT token
+Using -100 as IGNORE_INDEX
+
+Split queries - 
+[Test set] 264
+[Query number] 264
+[Raw answer number] 264
+[Numeric answer number] 264
+
+Construct - 
+[Number of shots] 0
+[Prompt used] You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.
+
+--------------------
+Train and log at 18:56:10
+--------------------
+Train and log at 18:57:01
+ModelTrainer initialized
+Using <|EOT|> as EOT token
+Using -100 as IGNORE_INDEX
+
+Split queries - 
+[Test set] 264
+[Query number] 264
+[Raw answer number] 264
+[Numeric answer number] 264
+
+Construct - 
+[Number of shots] 0
+[Prompt used] You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.
+
+----------
+Example index: 0
+[Raw question] James has to buy insurance.  Since he had an accident it was 60% more than normal.  The normal cost is $120 a month.  How much does he pay a year?
+[Prompted question] [{'role': 'user', 'content': "You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.\n\nJames has to buy insurance.  Since he had an accident it was 60% more than normal.  The normal cost is $120 a month.  How much does he pay a year?\n"}]
+[True numeric answer] 2304
+[Model answer] </s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s><s> [INST] You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.
+
+James has to buy insurance.  Since he had an accident it was 60% more than normal.  The normal cost is $120 a month.  How much does he pay a year?
+ [/INST] 
+
+| 2022 :-)
+
+В кавы 2080 7/32 5:19:43 4:03:55 17:59
+User 7 | ```
+
+## Answer: 0
+```;
+
+I would not be able to make the value of конецзивлате вспозв еподниколь в раннеем. После установлении:
+
+``` bash}
+```
+
+В этой изобразило, скажем, `121`:33 3:39
+
+Для выводится:
+
+```vbnet
+
+Преследование неокразом запрошен, однако можно решить в равно и в этом тому же в том видеобществе. В этом списке можно встречаться в вики, но вот поскольких-то исключенных изочительством и со своими знакомиками, а также убрал функции `bash` для каждого ответа:
+```
+* 1125 ::: 3:50 
+* 224 ::: 6:11
+* 705 ::: 2:18 
+* 134 ::: 3:10 
+* 216 ::: 5:45 
+* 3103 ::: 7:20 
+* 342 ::: 2:20 
+* 568 ::: 1:35
+```
+
+В то и, несмотдый же, для каждого калоравеля, мне нужно заменить `568` стрингера (``` 3103``` ) на `134`. Как добавлять значение в общий ключ:
+
+```bash
+
+Преведобразитв
+```
+
+```vbnet
+(1125 ::: 3:24
+224 ::: 6:12
+705 ::: 2:23
+134 ::: 3:14
+568 ::: 1:35
+```
+
+```
+
+Итак, покажет что-то-то. Важно вот в каком-то ключем мы знакомый смысл в том же самом тексте. Нашел информацию по тексту, чтобы, смогли теорическим путём перезапишить его в кошь на новой форме, чтобы сконвертнуть для других пользователей и получить **```136 ::: 1:10``` . То, по все, что нашие снимки именно текст видимого и нужно волкованым методом **`-D`:**
+
+```vbnet
+(function addFibList 
+    ( [list] 
+       (let a = [1125])
+       (let b = [224])
+       let c = [134]
+       let res1 = [1125]
+
+       for | a
+           if (a = 568)
+               let res2 = c
+           let a1 = (a - 568)
+               let b1 = (b - a1)
+               appendList [b] res2
+           else 
+               let res2 = a
+
+       append res2 result)
+
+       append res1 result)
+       (append (append list 1 (append res1 []))
+       \`)
+
+       (let result = iter map ( fn (comp (λ (λ (a)) (map (fn a 
+           let r = (sub (find-if (lambda (x)
+               (= (list-ref a x) a)
+           )
+           [a]))
+```
+
+Это решение использует может быть недостаточно для тех же целей, поскольку мы можем наложить один элемент из `b` в тот именно такой
+подход с ре
+[True or false] False
+
+Accuracy: 0.0
+--------------------
+Train and log at 19:02:57
+ModelTrainer initialized
+Using <|EOT|> as EOT token
+Using -100 as IGNORE_INDEX
+
+Split queries - 
+[Test set] 264
+[Query number] 264
+[Raw answer number] 264
+[Numeric answer number] 264
+
+Construct - [length] 264 
+[Number of shots] 0
+[Prompt used] You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.
+
+----------
+Example index: 0
+[Raw question] James has to buy insurance.  Since he had an accident it was 60% more than normal.  The normal cost is $120 a month.  How much does he pay a year?
+[Prompted question] [{'role': 'user', 'content': "You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.\n\nJames has to buy insurance.  Since he had an accident it was 60% more than normal.  The normal cost is $120 a month.  How much does he pay a year?\n"}]
+[True numeric answer] 2304
+[Model answer] </s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s><s> [INST] You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.
+
+James has to buy insurance.  Since he had an accident it was 60% more than normal.  The normal cost is $120 a month.  How much does he pay a year?
+ [/INST]
+
+```
+
+	|  | @  |
+``` </s> (I.
+
+````, a) { this;
+
+```{%(78) в этой 65.
+
+Давьятка:
+```{
+ 3/742 |
+```{
+ 
+ 1, 100.0;
+
+ var foo = [
+  "Используетсятвенственные слова. В точках, а не показывает изменяем на конкретном инициализировать? Найсколько других, используемый изменения имитировали их как отдельные. Так, в этом простейлателю и если же все рано.
+
+```JavaScript``:
+
+```java
+function removeUnique {
+  function removeUniqueValue (list) {
+   let unique: Array = [];
+   for (var i = 0; i < list.length; i < list.length; i++) {
+      if(  list[i].constructor( list[i+1] !== list[i] ) {
+         unique.push( list[i] );
+      }
+   }
+  return unique;
+}
+```
+
+И нам обошелся с никаких каких-то-то. У наисточьи, что-то.
+
+И в сравнении с решить вопроса, что означает 414? 
+
+Возьмиможно с этим и всё же я имею желаложность, в тот же период: как мной кажется, что я могу закончить поистийнственно-то, наличие двух-единственных.
+
+```JavaScript``:
+
+```java
+function removeUnique (list) {
+   let unique = [];
+   for (let i = 0; i < list.length; i++) {
+      let index = list.indexOf( list[i] );
+      if ( index < 0 ) {
+         unique.push( list[i] );
+         list.splice( index, 1 );
+      }
+   }
+   return unique;
+}
+```
+
+...
+
+```javascript
+function removeUnique (list) {
+  function removeUnique (list) {
+     var unique = [];
+     for (var i = 0 ; i < list . length; i++ ) {
+        var index = list.indexOf( list[i] ); // и т.д. как именно, только одного, а не всех с оригинальных
+        if ( index < 0 ) {
+            unique.push( list[i] ); // выдастётся пустое, если нет там такового элемента, а так
+            list.splice( index, 1 ); // удаляем строку
+        }
+     }
+     return unique;
+  }
+}
+```
+
+Вот код для поискать, если ключ есть, и удалит из массива все его совместнокопииевайт теперь не будет найден.
+
+```JavaScript``:
+
+```java
+function removeUnique (lst) {
+    let unique = [];
+    for (let i = 0; i < lst.length; i++) {
+        if (unique.indexOf(lst [i]) === -1 ) {
+            unique.push(lst [i]);
+            lst.splice(i, 1);
+            i--;
+        }
+        i++;
+    }
+    return unique;
+}
+```
+
+Можно либо поделиться с нашим методом `indexOf()`? 
+
+```JavaScript``:
+
+```javascript
+function removeUnique(array) {
+  let unique = [];
+  for (let i = 0, len = array.length; i < len; i++) {
+    let exists = array.indexOf( array [i] );
+    if (exists < 0) {
+        unique.push( array [i]);
+        array.splice( i, 1 ); // удаляем строку
+        i--;
+    }
+    i++;
+[True or false] False
+
+Accuracy: 0.0
+--------------------
+Train and log at 19:11:55
+ModelTrainer initialized
+Using <|EOT|> as EOT token
+Using -100 as IGNORE_INDEX
+
+Split queries - 
+[Test set] 264
+[Query number] 264
+[Raw answer number] 264
+[Numeric answer number] 264
+
+Construct - [length] 264 
+[Number of shots] 0
+[Prompt used] You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.
+
+----------
+Example index: 0
+[Raw question] James has to buy insurance.  Since he had an accident it was 60% more than normal.  The normal cost is $120 a month.  How much does he pay a year?
+[Prompted question] [{'role': 'user', 'content': "You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.\n\nJames has to buy insurance.  Since he had an accident it was 60% more than normal.  The normal cost is $120 a month.  How much does he pay a year?\n"}]
+[True numeric answer] 2304
+[Model answer] </s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s><s> [INST] You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.
+
+James has to buy insurance.  Since he had an accident it was 60% more than normal.  The normal cost is $120 a month.  How much does he pay a year?
+ [/INST] (182) the связительствотова именем в 1970 году.
+
+Изменение
+
+Вотова отработанным мотивам модернатит, в этой в некоторых изменения кода, нашими с точные, посколько на 11-м в 1935 году. Абъинициалиям (не публикатора, в других.
+
+Добольшее.
+
+```
+var new-year-2020 и 1849 г. в день уже 51 года после началения войны западноевропейские страны. Он проводит 28-го по 75-оченье
+
+[1904](%d1%20%2019 — %26%2013) и 125-ый вернемсят небольшую. Тони попаделец, и 75. Г.В. Они пожали назад и устанавленый детской школы в Широко. Только в конце 1940-ых гг. избранные устройствами и неприемникъ. Парламентий с целью получить, чтоб показаннее в руководство.
+
+В 16 в день, по сюда, чтобы общаякостить ряды. В. Использователи всползли в середину собственной внутренней жизни Генриха Ольша и их ближнейшими воютами. Средствами его аппарата возник нападения на Вольвера не привел капитаном Максом Фодже в Павловини и издерживил век на 11000 рублей
+
+(Восстаительна воинская походка заняла почтовъм среди г. г. шляхты
+
+(Дайк на 1882 год попали в Москву после поражение Военичанских войск на Волжском боевом, и потом из-за уветов в 1827 дочь Исаака Лебедева. Его жена взялась за руку и повел с ним в бою. И взял он в пеню. Во время этого же, он обнаружил в боевой камень и его возвратил дары, уплатил за долю этого дары Стеллзеру и поделил его за плечо и был калечален конечно ожесточно поранен в рукоушника Дзвяшку и потерявший жизни замок, епископ, был возможно, в то время нашей жизни был награждён за доступами в Казани, в ответственные воители 9 ноя. 22-го (и, по другим русамъ с 1885 гг. для чего-то? Им же он занялся созидайтылем, а Г. В. Штеппингел.
+
+274. Иллюстратор. — Нашими другой прочих уродов, поставленными в Сен. Его бдительную душъ и не простой и задорному и не напряжению. В описании на 1760 году, И. Озноев по поведомуется о том, что же, что в комедийском повести о порядке, поскольскими нужным, но тонкая нужности, потому что понадобиха заведовать каждым днем и всей советообщества, чтобы держать в отзывками в свою речь на неукрашенном держиться с 1886 ушел. Ж. Г. К. Страханович подтвердил недавно образованным в Москве.
+
+
+[True or false] False
+
+Accuracy: 0.0
+--------------------
+Train and log at 19:16:14
+ModelTrainer initialized
+Using <|EOT|> as EOT token
+Using -100 as IGNORE_INDEX
+
+Split queries - 
+[Test set] 264
+[Query number] 264
+[Raw answer number] 264
+[Numeric answer number] 264
+
+Construct - [length] 264 
+[Number of shots] 0
+[Prompt used] You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.
+
+----------
+Example index: 0
+[Raw question] James has to buy insurance.  Since he had an accident it was 60% more than normal.  The normal cost is $120 a month.  How much does he pay a year?
+[Prompted question] [{'role': 'user', 'content': "You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.\n\nJames has to buy insurance.  Since he had an accident it was 60% more than normal.  The normal cost is $120 a month.  How much does he pay a year?\n"}]
+[True numeric answer] 2304
+[Model answer] </s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s><s> [INST] You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.
+
+James has to buy insurance.  Since he had an accident it was 60% more than normal.  The normal cost is $120 a month.  How much does he pay a year?
+ [/INST]| | 1992 году. This is used if 3, 58. If we are used for еще модвикли, установлено.
+
+<| в том же никаких задачкой.
+
+In this case, this error is probably an unhelpful answer from someone who's using the **__** вручай, в 1945 году. Степенький и не поверен.
+
+Также, новая версия заключения, когда-тогем**ойти вспользуйте [this](https://github.com/en:814a3praxis-codex.org to create a new git repository and check it out for a detailed explanation of `hgammerichs-gitlab.com/.
+
+Получиться уж ни причине, что причина не могла причинитить на контексты. Here is my solution:
+
+```
+
+  const [Test::Test::ErrorContext](https://github.com/marketing-for-ruka/prior-articles-from-kibana.md) to create a new repo for my test cases.
+
+I don’t see any particular reason why the JSP example fails, but
+it will continue to provide an example for you here to test that.
+
+However , it is most probably a mistake that you are
+encountering the circular dependency loop issue. You should be able to check that yourself
+with these steps.
+
+1. Run `git checkout` for the `Test::ErrorContext` repo and the original repository.
+2. Create a new project in the same folder using `compositional compiler` or use `./vendor` directory - if you use `compositional compiler`, run `git merge <this-repo> .gitignore` в папке `git root directory before running `yarn install` command.
+
+In the `this-repo` folder, `git submodule` is a git submodule, and `compositional compiler` will use that information when trying to fetch a
+component, even if you didn’t run `git checkout` or `git clean install` for `this-repo`.
+
+If you want to use `this-repo as a submodule for a project in a composable way, consider merging it into another git repo. In that case, you need to checkout the submodule, and add it as a git submodule as described below:
+
+```
+git clone git@github.com/username/this-repo .git
+git submodule add git://github.com/username/this_repo .git
+git submodule add git://github.com/username/this-repo git://github.com/username/this-repo .git/
+```
+
+Then, you need to commit changes:
+
+```
+git add this-repo
+git commit -m "added this-repo as a dependent submodule"
+git commit
+```
+
+Now when you add it as a regular submodule, you’ll then need to add it to your main repo:
+
+```
+git submodule add git://github.com/username/this-repo
+git commit -m "added this-repo as submodule"
+```
+
+You should then add the `this-repo` to your `.gitignore` file as well.
+
+```
+git add this-repo/
+git commit -m "ignored this-repo (as a submodule)"
+git push <your-repo> master
+```
+
+The composition in this case may be used for your new development:
+
+```
+git clone your-repo
+git submodule add git://github.com/username/this-repo
+git commit -m "added this-repo as a submodule"
+git add this-repo/
+git commit -m "added this-repo as submodule"
+git commit
+git push <your-repo> master
+```
+
+That way, you have `this-repo` as a submodule in your main repository, but `git pull` will not fetch it automatically for you.
+
+Once you’ve done that, when you `git clone this-repo into a new folder, the changes in `this-repo` won’t change the main repository. You’ll need to update your submodule manually.
+
+```
+git -C <your-repo> git submodule update --init
+git submodule update --remote <github.com/username
+[True or false] False
+
+Accuracy: 0.0
+--------------------
+Train and log at 19:23:58
+ModelTrainer initialized
+Using <|EOT|> as EOT token
+Using -100 as IGNORE_INDEX
+
+Split queries - 
+[Test set] 264
+[Query number] 264
+[Raw answer number] 264
+[Numeric answer number] 264
+
+Construct - [length] 264 
+[Number of shots] 0
+[Prompt used] You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.
+
+----------
+Example index: 0
+[Raw question] James has to buy insurance.  Since he had an accident it was 60% more than normal.  The normal cost is $120 a month.  How much does he pay a year?
+[Prompted question] [{'role': 'user', 'content': "You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.\n\nJames has to buy insurance.  Since he had an accident it was 60% more than normal.  The normal cost is $120 a month.  How much does he pay a year?\n"}]
+[True numeric answer] 2304
+[Model answer] </s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s><s> [INST] You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.
+
+James has to buy insurance.  Since he had an accident it was 60% more than normal.  The normal cost is $120 a month.  How much does he pay a year?
+ [/INST]:  | 20223
+=====================) */
+
+When you come to уполне, икаторы, и на 12339. Той т. отрезвитите же вовслдата и отчесть, что этотламаематое зайвекли, всегда есть в категоворкет, но к собственно вспом.
+
+Важетелах полезно, и в дальши ежеесть имя выих тье.
+
+Звучатся задачам анимации, тогда в этом случае все оказались 3 и 4 немая.
+- **Недам не видальщими **MVC controller** есть еще несколько раз: 
+
+1. Словоительно и т.д.
+
+--- 
+**[https://ru.vmx.com/docs/aspnet-core-in-themsdf5/articles/learn-asp-mvc/controller/controllers.md] [https://ru.ruvenко.ru](https://ru.ruvenko.ru/docs/asp-core-in-themsdf5/articles/learn-asp-mvc/controller/)
+
+ 3. [https://learn.microsoft.com/ru-ru/aspnet-core/mvc/controllers/action-controllers](https://learn.microsoft.com/ru/ru-ru/aspnet-core/mvc/controllers/)
+
+Детальский вопрос с отобразили 
+- вспрямое ег.
+
+**[Константные классы (которые не имеют состояние в каком ли, ньюникли именно-то
+- мовем в конкретном кодом.
+
+И в 2002 году, изменяют всех переменных значений (в основном не из завтрать или если приходит в спикель и сохранится в бд?
+
+Можно проверить по занятии с другими благоразумными, конечно. Торжественно.
+
+* **Больше воплевы, проверяемся, канавделят, потому чтоб поняться не могут. Только делаем таким
+- ```
+кажими лядими изучения и пойматиться и уже букваренеть. А потом вы накосят нет :(
+
+Я имею, поэтому общий вывод как, как и удаленные тексты, на 25%
+- нишлем по иностранам подходят вообще, не узнал что-то.
+
+```csharp
+[
+    [HttpActionResult]
+    [HttpResponseDataModelState
+    {
+         [ErrorResult error = new HttpResponseResult<NoContentResult>(HttpStatusCode.BadRequest);
+         return error;
+    }
+
+    [HttpActionResult]
+    [HttpActionResult Default]
+    {
+         return null;
+    }
+}
+```
+
+Если нет :( Нет, это модификация для извлечения в каких-то-то не мерет с 5: **GetActionResult** и в отвечает значение типа, а а например, **HttpActionResult**,
+потом и в этой задаче вызывается только один. Выводим данные в формате JSON (запрос учинится для любого другого).
+
+Вместе с этим функцией создается абстрактный класс **HttpActionResult**, по-этому нам нужно перевести наши контроллер результат можно сверстать в вид простого json-маршала
+с токимто потому, что он л-ч запрошенные данные обычно возвращаются в нуле:
+
+```csharp
+// абстракция для того, чтобы подобный эккземлерить
+// для ответов в JsonResponseResult (например, в JSON)
+[True or false] False
+
+Accuracy: 0.0
+--------------------
+Train and log at 19:29:33
+ModelTrainer initialized
+Using <|EOT|> as EOT token
+Using -100 as IGNORE_INDEX
+
+Split queries - 
+[Test set] 264
+[Query number] 264
+[Raw answer number] 264
+[Numeric answer number] 264
+
+Construct - [length] 264 
+[Number of shots] 0
+[Prompt used] You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.
+
+----------
+Example index: 0
+[Raw question] James has to buy insurance.  Since he had an accident it was 60% more than normal.  The normal cost is $120 a month.  How much does he pay a year?
+[Prompted question] [{'role': 'user', 'content': "You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.\n\nJames has to buy insurance.  Since he had an accident it was 60% more than normal.  The normal cost is $120 a month.  How much does he pay a year?\n"}]
+[True numeric answer] 2304
+[Model answer] <s> [INST] You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.
+
+James has to buy insurance.  Since he had an accident it was 60% more than normal.  The normal cost is $120 a month.  How much does he pay a year?
+ [/INST]</s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s>boldmath {@code{let x = normalPrice;}\\
+  let y = x * (1.2);\\
+  let z = y * 2;\\
+  let x = x + y;\\
+  let z = x * 1.5; // \* Multiply x by y\\
+  let newX = x; \\
+  let result = x + y; \\
+
+  %% In this example, we initialize a variable named x with the value 1 and define a variable named y with the value 2. We then perform arithmetic operations using these variables using the standard rules for integer arithmetic. We multiply x by y to get the product z = x * y and store the result in the variable result.
+
+  %% In the next line, we assign the value of y to the variable z and redefine y to be the original value of x. Then we assign the value of y to x and initialize a new variable named result with the value of x multiplied by y. The final result is stored in the variable result.
+
+  %% Let's solve the problem posed by James: James has to pay 60% more a month for insurance after his accident. The normal cost is 120 dollars a month, so he pays a total of 180 dollars a year. %%
+
+ To find out how much James pays in a year, we add the cost of a month to the cost of a month:
+
+ \* costInAMonth = 120; // normal cost
+ \* costInAccident = costInAMonth * 1.5; // cost in accident month
+ \* yearlyCost = costInAMonth + costInAccident; // total yearly cost
+
+ Now that we have the total yearly cost, we can calculate how much James pays a year by dividing by 12 (the number of months in a year):
+
+ \* yearlyPayment = yearlyCost / 12;
+
+ The final answer is 15 dollars a month. Therefore, James pays 180 dollars a year for insurance.</s>
+[True or false] False
+
+Accuracy: 0.0
+--------------------
+Train and log at 19:31:30
+ModelTrainer initialized
+Using <|EOT|> as EOT token
+Using -100 as IGNORE_INDEX
+
+Split queries - 
+[Test set] 264
+[Query number] 264
+[Raw answer number] 264
+[Numeric answer number] 264
+
+Construct - [length] 264 
+[Number of shots] 0
+[Prompt used] You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.
+
+----------
+Example index: 0
+[Raw question] James has to buy insurance.  Since he had an accident it was 60% more than normal.  The normal cost is $120 a month.  How much does he pay a year?
+[Prompted question] [{'role': 'user', 'content': "You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.\n\nJames has to buy insurance.  Since he had an accident it was 60% more than normal.  The normal cost is $120 a month.  How much does he pay a year?\n"}]
+[True numeric answer] 2304
+[Model answer] </s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s><s> [INST] You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.
+
+James has to buy insurance.  Since he had an accident it was 60% more than normal.  The normal cost is $120 a month.  How much does he pay a year?
+ [/INST]
+
+The CakePHP 1.0: 2850
+
+1. The current model. There are few people around 000.00 다음을 5 
+
+Now, we cannot just modify the result so 4000
+```
+
+Техен. Атласы.
+
+``` typescript.
+
+It looks like the 3e-combat-combinators, there's a simple way to convert those into the same format, but I can't see any way of doing the same thing in the main body for more readability.
+
+I tried the following instead (after converting it):
+
+```scss
+const fn.bind(1):
+  let user_input = 1031;
+
+  it = 0;
+
+  let iter = Iterator(Arrays).map<int>([1,1, 2, 15]);
+
+  let a = Iterator<int>(iter); let b = iter[3]; let c = Iterator<int>(iter); let f = iter[2];
+
+  // we can get the second item from array with [3]
+
+  console.log(b); // 2
+
+  iter.next(); // we advance the iterator but 
+  console.log(a); // prints 1 
+  console.log(c); // prints 15
+```
+
+I suspect you're just trying to convert a list of 3 integers to a list with a static variable, so there's not a need to loop through that list and get the specific item you want.
+
+Now, if you want an array, there is the `Array.map()` method:
+
+```typescript
+interface Iterator<int> iter = Array<int>([1, 2, 3]);
+
+let a = iter[0]; let b = iter[1]; // or simply
+let a = iter[0]; let b = iter[1];
+```
+
+You might want to note that `Array<number>` comes from **TypeScript 5.0**. If you're still using TypeScript 4.5, it is called `Array<number>` instead.
+
+The above code will also result in getting the same value, and the code for getting a specific item is also simpler with the `map()` method.
+
+Comment: Why you don't write code for `b` and `c`, just use `iter[1]` and `iter[2]` instead of `iter[1]` and `iter[2]`?
+
+```typescript
+  let myIter: Iterator<number> = [1, 4, 5, 6 ].map((value: number, index: number, index: number): number => number) => 
+    return index % 2 === value;
+
+  let arr: Array<number> = [];
+
+  for (let i = 0, i < arr.length; ++i; ) {
+    let el = arr[i];
+
+    if (el % 2 === 0) {
+      arr[i] = myIter(el);
+    }
+  }
+
+  console.log(arr);
+
+  // the code above will filter out the even numbers in your array, in the same way (by multiplying by 2 and then checking the remainder).
+```
+
+## Answer (4)
+
+You want `map()` if you want to transform each element to a new Array, and `filter()` if you want to keep an array of a specific type (when the returned value is `false` you exclude the item).
+
+In this regard, you could use something like:
+
+```typescript
+// 1. With map
+const numbers: Array<number> = [1, 2, 3, 4 ].map((val => val => val % 2 === 0) |>\>
+
+  let result: Array<number> = numbers.map((val: number) => val % 2 === 0 ? 2 * val : val);
+
+  console.log(result);  // [16, 0, 0, 4]
+```
+
+```typescript
+// 2. With filter
+const numbers //: Array<number> = [ 1, 2, 3, 4 ];
+
+ let result = numbers.filter((val, index): boolean => index % 2
+[True or false] False
+
+Accuracy: 0.0
+--------------------
+Train and log at 19:44:57
+ModelTrainer initialized
+Using <|EOT|> as EOT token
+Using -100 as IGNORE_INDEX
+
+Split queries - 
+[Test set] 264
+[Query number] 264
+[Raw answer number] 264
+[Numeric answer number] 264
+
+Construct - [length] 264 
+[Number of shots] 0
+[Prompt used] You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.
+
+----------
+Example index: 0
+[Raw question] James has to buy insurance.  Since he had an accident it was 60% more than normal.  The normal cost is $120 a month.  How much does he pay a year?
+[Prompted question] [{'role': 'user', 'content': "You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.\n\nJames has to buy insurance.  Since he had an accident it was 60% more than normal.  The normal cost is $120 a month.  How much does he pay a year?\n"}]
+[True numeric answer] 2304
+[Model answer] <s> [INST] You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.
+
+James has to buy insurance.  Since he had an accident it was 60% more than normal.  The normal cost is $120 a month.  How much does he pay a year?
+ [/INST]</s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s>""\/
+
+As we\ can\ see\ ,\ he\ pays\ $120\ a\ month.\
+In\ other\ words,\ he\ pays\ $1{,}25\%\ times\ more\\
+In\ this\ code\ example,\ I\ assume\ that\ James\ pays\ $300\ a\ month.\
+Therefore,\ the\ annual\ payment\ is\ $3600,\
+or\ $3960.\
+So,\ James\ annual\ payment\ is:\
+$$3600+$300=$10,800=\$4,600=\$24$$\ and\ so\ on.\
+\ $$16,200+$1,600+$2,400=\$12.9600\
+\ Therefore,\ James\ total\ cost\ over\ 12\ months\ is:\
+$$16,200+$1,600+$24.800+$12.9600\
+
+We\ want\ to\ calculate\ James'\ total\ cost\ for\ a\ year,\ including\ insurance\ premiums,\ so\ we\ calculate\ total\ cost\ as:\
+$$17,1200+$3,200+$60+$12.600+$120+$18.480=\$12.280+\ \ and\ so\ on.\
+
+We\ use\ the\ rule\ of\ $n\ *=\\ n-1$:\
+$$n\ *=\\ n-1 +1$;\
+so,\ the\ expression\ becomes:\
+$$(12n-1)^*(12n-2)+(2n)\\
+$$(12n-1+1)^*(12n-2+2)+(2n)\\
+$$(12n-1+1+1)^*(12n-2+2+1)+(2n)\\
+$$(12n-1+2+2+1)^*(12n-2+2+2+1)+(2n)\\
+$$(12n-1+3+2+1)^*(12n-2+2+3+1)+(3n)\\
+$$(12n-1+3+3+1)^*(12n-2+2+3+2)+(3n)\\
+$$(12n-1+4+3+1)^*(12n-2+2+4+2)+(4n)\\
+$$(12n-1+4+4+1)^*(12n-2+2+4+3)+(4n)\\
+$$(12n-1+5+4+1)^*(12n-2+2+5+3)+(5n)\\
+$$(12n-1+5+5+1)^*(12n-2+2+5+4)+(5n)\\
+$$(12n-1+6+5+1)^*(12n-2+2+6+5)+(6n)\\
+$$(12n-1+6+6+1)^*(12n-2+2+6+6)+(6n)\\
+$$(12n-1+7+6+1)^*(12n-2+2+7+7)+(7n)\\
+$$(12n-1+8+7+1)^*(12n-2+2+8+8)+(8n)\\
+$$(12n-1+9+8+1)^*(12n-2+2+9+9)+(9n)\\
+$$(12n-1+10+9+1)^*(12n-2+2+10+10)+(10n)\\
+$$(12n-1+11+10+1)^*(12n-2+2+11+11)+(11n)\\
+$$(12n-1+12+11+1)^*(12n-2+2+12+12)+(12n)\\
+$$(12n-1+13+12+1)^*(12n-2+2+13+13)+(1
+[True or false] False
+
+----------
+Example index: 1
+[Raw question] Greg puts clean sheets on 4 twin beds and 1 king size bed every week.  His laundry machine will only allow him to wash 2 twin sets of sheets at a time and 1 king set of sheets at a time.  How many loads of laundry does he do in a year?
+[Prompted question] [{'role': 'user', 'content': "You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.\n\nGreg puts clean sheets on 4 twin beds and 1 king size bed every week.  His laundry machine will only allow him to wash 2 twin sets of sheets at a time and 1 king set of sheets at a time.  How many loads of laundry does he do in a year?\n"}]
+[True numeric answer] 156
+[Model answer] <s> [INST] You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.
+
+Greg puts clean sheets on 4 twin beds and 1 king size bed every week.  His laundry machine will only allow him to wash 2 twin sets of sheets at a time and 1 king set of sheets at a time.  How many loads of laundry does he do in a year?
+ [/INST]</s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s>ALSE\,\\n\n\n\n".\]
+\n" -->\n\n<?\n\n";\n\n";
+// Step 3: Calculate the number of loads required to wash Greg's laundry in a year.\n\n\nTo calculate the number of loads Greg does in a year, we need to find out how many twin sets of sheets Greg uses per week.\n\nWe assume Greg uses one set of twin sheets per bed and one set per week. So the number of loads in a year is 2 * 52\n\n(Since Greg uses one set of twin sheets per week,we have 208 loads in a year).\nTo find out the number of washes in a year, we'll calculate the number of washes Greg does in a week first. If Greg uses three sheets per week, then we have 12 * 52 = 624 sheets in a year.\n\nSo now we can easily figure out Greg's laundry needs. We'll call the number of twin sets of sheets he uses in a week T, and the number of king-size sets he uses in a year K:\n\nT = 52\n\nNumber of twin sets per week = 3\n\nNumber of king-size sets per week = 1\n\nSo the number of loads Greg does in a year is 3 * 52 + 1 = 157 loads.\n\nTherefore, Greg does 3 loads of laundry per week, and 1 load per week for the king-size bed, so he does a total of 3 * 52 + 1 = 158 loads in a year.";
+
+Now, Greg uses one large set and one small set of sheets per week on the king-size bed and the twin beds respectively. Let's calculate the number of washes he does in a week first:
+
+1. Greg uses one set of twin sheets per week, so the number of washes with twin sheets in a week is 1 * 52 = 52 washes.\n
+2. Greg uses one set of king-size sheets per week, so the number of washes with king-size sheets in a week is 1.\n
+
+Therefore, the total number of washes Greg does in a week is 52 + 1 = 53 washes.\n
+
+Now we need to figure out how many loads of laundry Greg does in a year. Since there are 52 weeks in a year, the total number of loads in a year is 53 week loads * 52 = 2864 loads.
+
+Therefore, Greg does 2864 loads of laundry in a year.</s>
+[True or false] False
+
+----------
+Example index: 2
+[Raw question] Jill and her friends watch 4 movies every Saturday and half the number of movies on Sunday than on Saturday. If they watch movies every weekend, how many movies can they watch in 4 weeks?
+[Prompted question] [{'role': 'user', 'content': "You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.\n\nJill and her friends watch 4 movies every Saturday and half the number of movies on Sunday than on Saturday. If they watch movies every weekend, how many movies can they watch in 4 weeks?\n"}]
+[True numeric answer] 24
+[Model answer] <s> [INST] You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.
+
+Jill and her friends watch 4 movies every Saturday and half the number of movies on Sunday than on Saturday. If they watch movies every weekend, how many movies can they watch in 4 weeks?
+ [/INST]</s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s>ficaition=0;
+
+\end{verbatim}
+\\
+
+\end{verbatim}
+
+This would give us an integer variable `count` that keeps track of the number of movies watched by Jill and her friends every weekend.
+
+\begin{verbatim}
+
+\underline{totalMovies} = 4 \* 7 \* 2 \* 4;
+
+\underline{totalMoviesPerWeekend} = \underline{totalMoviesPerWeekend} + \underline{moviesPerSaturday} + \underline{moviesPerSunday};
+
+\end{verbatim}
+
+This variable `totalMovies` is the total number of movies watched by Jill in a weekend, that is, 4 \* 7 + 2 \* 4 = 16.
+
+The variable `moviesPerSaturday` is the number of movies watched by Jill on Saturdays, and `moviesPerSunday` is the number of movies watched on Sundays. The multiplication operator is used to calculate the total number of movies watched in 4 weeks:
+
+\underline{totalMovies} = \underline{totalMoviesPerWeekend} \* 7 \* 4 + \underline{moviesPerSaturday} \* 4 + \underline{moviesPerSunday} \* 7 \* 4;
+
+\end{verbatim}
+
+\end{lstlisting}
+
+Therefore, the expression \underline{totalMovies} = \underline{totalMoviesPerWeekend} \* 7 + \underline{moviesPerSaturday} + \underline{moviesPerSunday} will give us the integer value of 32 in the variable \underline{totalMovies}.
+
+\end{lstlisting}
+
+\end{solution}
+
+\begin{lstlisting}
+\underline{function} \underline{totalMovies(numberOfWeekdays moviesPerDay)}
+\{
+\quad \underline{let} \quad totalMoviesPerWeekend = 7 \* moviesPerSunday + moviesPerSaturday;
+\quad totalMovies = totalMoviesPerWeekend \* 7 + moviesPerSaturday + moviesPerSunday;
+\}
+
+\end{lstlisting}
+
+This function accepts an integer \underline{numberOfWeekdays} as an argument, which represents the number of days in a week. It then calculates the total number of movies watched per day using the variable \underline{moviesPerDay}, multiplies it by the number of weeks (\underline{numberOfWeekdays}), and then adds the total number of movies watched on Saturdays (\underline{moviesPerSaturday}) and Sundays (\underline{moviesPerSunday}). Finally, it returns the total number of movies watched in 4 weeks, which is stored in the variable \underline{totalMovies}.
+
+Here's the step-by-step calculation for the given example:
+
+\begin{lstlisting}
+\quad moviesPerDay = 4; % In a week, Jill watches 4 movies.
+\quad numberOfWeekdays = 7; % A week contains 7 days: Saturday, Sunday, Monday, ..., Friday.
+\quad totalMoviesPerWeekend = moviesPerSaturday + moviesPerSunday; % The number of movies watched on weekends.
+\quad totalMovies = totalMoviesPerWeekend \* 7 + moviesPerSaturday + moviesPerSunday; % The total number of movies watched in 4 weeks.
+\end{lstlisting}
+
+The function \underline{totalMovies(numberOfWeekdays moviesPerDay)} calculates the total number of movies watched in 4 weeks by multiplying the number of movies watched per day (\underline{moviesPerDay}) by the number of days in a week (\underline{numberOfWeekdays}). After that, it adds the number of movies watched on Saturdays (\underline{moviesPerSaturday}) and Sundays (\underline{moviesPerSunday}) to get the final result.
+
+Hence, \underline{totalMovies} will contain the value 32 when called with \underline{numberOfWeekdays} equal to 4.</s>
+[True or false] False
+
+----------
+Example index: 3
+[Raw question] Leo collects stickers. Two years ago, he had 100 stickers in his collection. Last year, Leo collected 50 stickers. This year, he collected twice the number of stickers as the previous year. How many stickers does Leo have in his collection?
+[Prompted question] [{'role': 'user', 'content': "You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.\n\nLeo collects stickers. Two years ago, he had 100 stickers in his collection. Last year, Leo collected 50 stickers. This year, he collected twice the number of stickers as the previous year. How many stickers does Leo have in his collection?\n"}]
+[True numeric answer] 250
+[Model answer] <s> [INST] You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.
+
+Leo collects stickers. Two years ago, he had 100 stickers in his collection. Last year, Leo collected 50 stickers. This year, he collected twice the number of stickers as the previous year. How many stickers does Leo have in his collection?
+ [/INST]</s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s></s>boldmath\}.\]
+
+\newline
+\end{verbatim}
+\newline
+\newline
+\newline
+\newline
+Leo collected \textbackslash{} 50 stickers last year. \newline
+This year, Leo collected 25 stickers. \newline
+Therefore, after two years of collecting stickers, Leo has 175 stickers in his collection.
+
+To find the total number of stickers Leo has now, we need to add the number of stickers collected this year to the number of stickers he had two years ago:
+
+\textbackslash{Total number of stickers now = Total number of stickers two years ago + new stickers this year}
+\newline
+\textbackslash{Total number of stickers now = 175}
+
+Therefore,\ Leo now has 175 stickers in his collection.
+
+Leo continues to collect stickers every year. We don't know how many stickers he collected last year, but we can find Leo's total number of stickers by using the information given in the problem: Two years ago, Leo collected 100 stickers, and last year, he collected 50 stickers. Thus,\ newline
+Total number of stickers now = Total number of stickers two years ago + stickers collected this year. \newline
+Total number of stickers now = 175 \newline
+
+Therefore,\ Leo has 175 stickers in his collection.</s>
+[True or false] False
+
+--------------------
+Train and log at 19:48:56
+ModelTrainer initialized
+Using <|EOT|> as EOT token
+Using -100 as IGNORE_INDEX
+
+Split queries - 
+[Test set] 264
+[Query number] 264
+[Raw answer number] 264
+[Numeric answer number] 264
+
+Construct - [length] 264 
+[Number of shots] 0
+[Prompt used] You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.
+
+--------------------
+Train and log at 19:54:09
+ModelTrainer initialized
+Using <|EOT|> as EOT token
+Using -100 as IGNORE_INDEX
+
+Split queries - 
+[Test set] 264
+[Query number] 264
+[Raw answer number] 264
+[Numeric answer number] 264
+
+Construct - [length] 264 
+[Number of shots] 0
+[Prompt used] You are a high school math teacher, try to solve one problem step by step according to examples. Annotate your final numeric answer as '#### YOUR_NUMBER'.
+
+--------------------
+Train and log at 19:55:38
+--------------------
+Train and log at 17:05:32
+--------------------
+Train and log at 17:06:01
+--------------------
+Train and log at 17:10:10
+--------------------
+Train and log at 17:11:14
+--------------------
+Train and log at 17:11:55
+--------------------
+Train and log at 17:13:32
+--------------------
+Train and log at 17:14:27

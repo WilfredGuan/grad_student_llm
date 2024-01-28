@@ -27,11 +27,15 @@ class LLMLogger:
 
     def log_message_txt(self, message):
         self.log_file.write(message + "\n")
+        self.log_file.flush()
 
     def close(self):
         self.log_file.close()
 
     def draw_result(self):
+        pass
+
+    def show_result(self):
         pass
 
 
