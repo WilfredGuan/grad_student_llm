@@ -1,5 +1,6 @@
 # graduate_student_LLM
 ## Initiatives
+
 Hello there!
 
 I'm currently a Master of Science in Computer Science (MSCS) student at Yale University, focusing my research on Large Language Models (LLMs). In the world of graduate studies, particularly in fields like ours, conducting expansive and resource-intensive experiments – such as training a model from the scratch – can be quite challenging due to resource constraints.
