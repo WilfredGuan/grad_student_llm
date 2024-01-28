@@ -1,14 +1,16 @@
 from dataclasses import dataclass, field
 from typing import Optional, Dict, Sequence
 import transformers
+import torch
 
 
 @dataclass
 class ModelArguments:
     model_name_or_path: Optional[str] = field(
-        default="deepseek-ai/deepseek-coder-6.7b-instruct"
+        default="mistralai/Mistral-7B-Instruct-v0.2"
     )
-    torch_dtype: str = field(default="float16")
+    torch_dtype: any = field(default=torch.bfloat16)
+    device: str = field(default="cpu")
 
 
 @dataclass
@@ -16,12 +18,19 @@ class DataArguments:
     data_path: str = field(
         default=None, metadata={"help": "Path to the training data."}
     )
+    dataloader: str = field(default="GSM8KLoader")
+    constructor: str = field(default="GSM8KConstructor")
 
 
 @dataclass
 class TrainArguments(transformers.TrainingArguments):
-    train_flag: bool = field(default=False)
-    cache_dir: Optional[str] = field(default=None)
+    output_dir: Optional[str] = field(
+        default="./output_dir",
+        metadata={
+            "help": "The output directory where the model predictions and checkpoints will be written."
+        },
+    )
+    cache_dir: Optional[str] = field(default="./cache_dir")
     optim: str = field(default="adamw_torch")
     model_max_length: int = field(
         default=512,
@@ -33,4 +42,4 @@ class TrainArguments(transformers.TrainingArguments):
 
 @dataclass
 class EvalArguments:
-    pass
+    evaluator_name: str = field(default="ModelEvaluatorBase")
