@@ -43,3 +43,5 @@ class TrainArguments(transformers.TrainingArguments):
 @dataclass
 class EvalArguments:
     evaluator_name: str = field(default="ModelEvaluatorBase")
+    n_samples: int = field(default=1)
+    k: int = field(default=1)
