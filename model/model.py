@@ -103,5 +103,5 @@ class ModelBase:
             trust_remote_code=True,
         )
         tokenizer.pad_token = tokenizer.eos_token
-        tokenizer.padding_side = "right"
+        tokenizer.padding_side = "left"
         return model, tokenizer

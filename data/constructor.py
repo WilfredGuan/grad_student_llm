@@ -21,7 +21,8 @@ class GSM8KConstructor(Constructor):
 
     def _construct(self, data):
         print("Constructing GSM8K data...")
-        template = "Your question is: {} \n\n Your answer should be a numeric number with the format ### NUMBER"
+        # template = "You are a math teacher thinking step by step. Your question is: {} \n\n Your final answer must be like this #### NUMBER"
+        template = "You are a math teacher thinking step by step. Replace your numeric answers to YOUR_NUMBER in this format #### YOUR_NUMBER.\n\nYour question is: {}\n\n Your answer is:"
         prompt_list = []
         for sample in data:
             prompt = template.format(sample["question"])

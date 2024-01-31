@@ -5,6 +5,8 @@ from log.llm_logger import LLMLogger
 from argparse import ArgumentParser
 from accelerate import Accelerator, DistributedDataParallelKwargs
 
+import os
+
 if __name__ == "__main__":
     # print("Cuda availability:", torch.cuda.is_available())
     kwargs_handlers = [DistributedDataParallelKwargs(find_unused_parameters=True)]
@@ -17,7 +19,9 @@ if __name__ == "__main__":
     """
 
     # Arguments
-    logger = LLMLogger(model_name="Mistral-7B-Instruct-v0.2", log_dir="./log")
+    logger = LLMLogger(
+        model_name="Mistral-7B-Instruct-v0.2", log_dir=os.getcwd() + "/log"
+    )
     # print("Logger Initialized:", logger)
 
     model_arguemnts = ModelArguments(
@@ -38,6 +42,7 @@ if __name__ == "__main__":
 
     eval_arguments = EvalArguments(
         evaluator_name="GSM8K",
+        max_new_tokens=400,
     )
 
     # Load Model
