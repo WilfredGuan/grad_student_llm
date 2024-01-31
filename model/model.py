@@ -25,12 +25,10 @@ class ModelBase:
         self.eval_args = eval_arguments
         self.logger = logger
 
-        # print("Cuda availability:", torch.cuda.is_available())
         self.model, self.tokenizer = self._load_from_hf(accelerator)
 
-        self.dataloader = eval(self.data_args.dataloader)(
-            self.data_args.data_path, batch_size=1
-        )
+        self.data = eval(self.data_args.dataloader)(data_path=self.data_args.data_path)
+        self.constructed_data = eval(self.data_args.constructor)(data=self.data).data
 
         if self.train_args != None:
             self.trainer = eval(self.train_args.trainer_name)(
@@ -43,10 +41,11 @@ class ModelBase:
         if self.eval_args != None:
             self.evaluator = eval(self.eval_args.evaluator_name)(
                 model=self.model,
-                dataloader=self.dataloader,
+                data=self.constructed_data,
                 eval_args=self.eval_args,
                 logger=self.logger,
                 accelerator=accelerator,
+                tokenizer=self.tokenizer,
             )
 
     def model_gen(self, messages):
@@ -95,12 +94,14 @@ class ModelBase:
             self.model_args.model_name_or_path,
             torch_dtype=self.model_args.torch_dtype,
             device_map=accelerator.device,
+            trust_remote_code=True,
         )
         tokenizer = AutoTokenizer.from_pretrained(
             self.model_args.model_name_or_path,
             torch_dtype=self.model_args.torch_dtype,
             device_map=accelerator.device,
+            trust_remote_code=True,
         )
         tokenizer.pad_token = tokenizer.eos_token
-        tokenizer.padding_side = "right"
+        tokenizer.padding_side = "left"
         return model, tokenizer

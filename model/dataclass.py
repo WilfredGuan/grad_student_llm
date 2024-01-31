@@ -9,7 +9,7 @@ class ModelArguments:
     model_name_or_path: Optional[str] = field(
         default="mistralai/Mistral-7B-Instruct-v0.2"
     )
-    torch_dtype: any = field(default=torch.bfloat16)
+    torch_dtype: any = field(default=torch.float16)
     device: str = field(default="cpu")
 
 
@@ -43,3 +43,9 @@ class TrainArguments(transformers.TrainingArguments):
 @dataclass
 class EvalArguments:
     evaluator_name: str = field(default="ModelEvaluatorBase")
+    n_samples: int = field(default=1)
+    k: int = field(default=1)
+    temperature: float = field(default=0)
+    top_p: float = field(default=0.95)
+    max_new_tokens: int = field(default=200)
+    batch_size: int = field(default=1)
