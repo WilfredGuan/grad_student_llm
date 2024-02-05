@@ -17,21 +17,23 @@ if __name__ == "__main__":
     parser = ArgumentParser()
     parser.add_argument("--logdir", type=str, default="")
     """
+    model_name = "mistralai/Mistral-7B-Instruct-v0.2"
 
     # Arguments
-    logger = LLMLogger(
-        model_name="Mistral-7B-Instruct-v0.2", log_dir=os.getcwd() + "/log"
-    )
+    logger = LLMLogger(model_name=model_name, log_dir=os.getcwd() + "/log")
     # print("Logger Initialized:", logger)
 
     model_arguemnts = ModelArguments(
-        model_name_or_path="mistralai/Mistral-7B-Instruct-v0.2",
+        model_name_or_path=model_name,
         device=accelerator.device,
     )
     # print("Model Arguments Initialized:", model_arguemnts)
 
     data_arguments = DataArguments(
-        data_path="./data/GSM8K/test.jsonl",
+        # data_path=os.getcwd() + "/data/GSM8K/test.jsonl",
+        # split_ratio=0.8,
+        train_path_or_name=os.getcwd() + "/data/GSM8K/train.jsonl",
+        test_path_or_name=os.getcwd() + "/data/GSM8K/test.jsonl",
         dataloader="GSM8KLoader",
         constructor="GSM8KConstructor",
     )

@@ -14,7 +14,7 @@ class Constructor:
 
 
 class GSM8KConstructor(Constructor):
-    def __init__(self, data, *kwargs):
+    def __init__(self, data_args, *kwargs):
         super().__init__(data=data)
 
         self.data = self._construct(data)
@@ -31,3 +31,6 @@ class GSM8KConstructor(Constructor):
         # print("Number of examples:", len(prompt_list))
         # print("Example:", prompt_list[0])
         return prompt_list
+
+    def _cot_construct(self, data):
+        pass

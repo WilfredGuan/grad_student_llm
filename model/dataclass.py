@@ -19,7 +19,28 @@ class DataArguments:
         default=None, metadata={"help": "Path to the training data."}
     )
     dataloader: str = field(default="GSM8KLoader")
+    split_ratio: float = field(default=None)
+    split_validation: bool = field(default=False)
+    train_path: str = field(default=None)
+    test_path: str = field(default=None)
+    val_path: str = field(default=None)
+    if split_ratio is None:
+        assert train_path is not None, "Train path or name is required."
+        assert test_path is not None, "Test path or name is required."
+        assert val_path is not None, "Validation path or name is required."
+
     constructor: str = field(default="GSM8KConstructor")
+    construction_mode: str = field(default="zero-shot")
+    n_shot: int = field(default=0)
+    if construction_mode == "n-shot":
+        assert n_shot > 0, "You should set n_shot = n for n-shot construction."
+
+    def __post_init__(self):
+        valid_modes = ["0-shot", "n-shot", "cot"]
+        if self.construction_mode not in valid_modes:
+            raise ValueError(
+                f"construction_mode must be one of {valid_modes}, got '{self.construction_mode}'"
+            )
 
 
 @dataclass
