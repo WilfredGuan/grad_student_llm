@@ -15,19 +15,26 @@ class ModelArguments:
 
 @dataclass
 class DataArguments:
+    """
+    construction_mode - data structure Mapping:
+    zero-shot, data = data
+    n-shot, data = train, test
+    cot, data = train, test
+    """
+
     data_path: str = field(
         default=None, metadata={"help": "Path to the training data."}
     )
     dataloader: str = field(default="GSM8KLoader")
-    split_ratio: float = field(default=None)
-    split_validation: bool = field(default=False)
+    # split_ratio: float = field(default=None)
+    # split_validation: bool = field(default=False)
     train_path: str = field(default=None)
     test_path: str = field(default=None)
     val_path: str = field(default=None)
-    if split_ratio is None:
-        assert train_path is not None, "Train path or name is required."
-        assert test_path is not None, "Test path or name is required."
-        assert val_path is not None, "Validation path or name is required."
+    # if split_ratio is None:
+    #     assert train_path is not None, "Train path or name is required."
+    #     assert test_path is not None, "Test path or name is required."
+    #     assert val_path is not None, "Validation path or name is required."
 
     constructor: str = field(default="GSM8KConstructor")
     construction_mode: str = field(default="zero-shot")

@@ -13,6 +13,7 @@ class LLMLogger:
         os.makedirs(os.path.dirname(self.log_dir), exist_ok=True)
         self.log_file = os.path.join(self.log_dir, "log_message.txt")
         if not os.path.exists(self.log_file):
+            os.mkdir(self.log_dir)
             self.log_file = open(self.log_file, "w")
         else:
             self.log_file = open(self.log_file, "a")

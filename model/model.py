@@ -27,9 +27,9 @@ class ModelBase:
 
         self.model, self.tokenizer = self._load_from_hf(accelerator)
 
-        self.data = eval(self.data_args.dataloader)(data_args=self.data_args)
+        self.data = eval(self.data_args.dataloader)(data_args=self.data_args).data
         self.constructed_data = eval(self.data_args.constructor)(
-            data_args=self.data_args
+            data=self.data, data_args=self.data_args
         ).data
 
         if self.train_args != None:

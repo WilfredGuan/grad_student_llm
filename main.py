@@ -20,7 +20,9 @@ if __name__ == "__main__":
     model_name = "mistralai/Mistral-7B-Instruct-v0.2"
 
     # Arguments
-    logger = LLMLogger(model_name=model_name, log_dir=os.getcwd() + "/log")
+    logger = LLMLogger(
+        model_name="Mistral-7B-Instruct-v0.2", log_dir=os.getcwd() + "/log"
+    )
     # print("Logger Initialized:", logger)
 
     model_arguemnts = ModelArguments(
@@ -32,8 +34,10 @@ if __name__ == "__main__":
     data_arguments = DataArguments(
         # data_path=os.getcwd() + "/data/GSM8K/test.jsonl",
         # split_ratio=0.8,
-        train_path_or_name=os.getcwd() + "/data/GSM8K/train.jsonl",
-        test_path_or_name=os.getcwd() + "/data/GSM8K/test.jsonl",
+        train_path=os.getcwd() + "/data/GSM8K/train.jsonl",
+        test_path=os.getcwd() + "/data/GSM8K/test.jsonl",
+        construction_mode="n-shot",
+        n_shot=1,
         dataloader="GSM8KLoader",
         constructor="GSM8KConstructor",
     )
