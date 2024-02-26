@@ -1,3 +1,4 @@
 /data/GSM8K/*
 /data/step1_1-shot/
 /log/Mistral-7B-Instruct-v0.2/
+/**/__pycache__/
