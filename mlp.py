@@ -124,7 +124,7 @@ if __name__ == "__main__":
     print("Train loader length:", len(train_loader))
     print("Test loader length:", len(test_loader))
 
-    model = MLP(num_epochs=20, device=device, batch_size=batch_size, lr=0.001).to(
+    model = MLP(num_epochs=10, device=device, batch_size=batch_size, lr=0.0015).to(
         device
     )
     print(model)
