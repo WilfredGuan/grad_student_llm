@@ -34,12 +34,9 @@ if __name__ == "__main__":
     data_arguments = DataArguments(
         # data_path=os.getcwd() + "/data/GSM8K/test.jsonl",
         # split_ratio=0.8,
-        train_path=os.getcwd() + "/data/GSM8K/train.jsonl",
-        test_path=os.getcwd() + "/data/GSM8K/test.jsonl",
-        construction_mode="n-shot",
-        n_shot=1,
-        dataloader="GSM8KLoader",
-        constructor="GSM8KConstructor",
+        data_path=os.getcwd() + "/data/step1_1-shot/GSM8K_1-shot_final_log.jsonl",
+        dataloader="Step2KnowledgeLoader",
+        constructor="Step2KnowledgeConstructor",
     )
     # print("Data Arguments Initialized:", data_arguments)
 
@@ -47,7 +44,7 @@ if __name__ == "__main__":
     # print("Training Arguments Initialized:", train_eval_arguments)
 
     eval_arguments = EvalArguments(
-        evaluator_name="GSM8K",
+        evaluator_name="Step2KnowledgeEvaluator",
         max_new_tokens=400,
     )
 

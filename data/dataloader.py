@@ -77,7 +77,7 @@ class GSM8KLoader(DataLoader):
             return train_data, test_data
 
 
-class Step2Loader(DataLoader):
+class Step2KnowledgeLoader(DataLoader):
     def __init__(self, data_args):
         self.data_args = data_args
         self.data = self._get_data(self.data_args.data_path)
@@ -89,35 +89,32 @@ class Step2Loader(DataLoader):
             lines = fp.readlines()
             for line in lines:
                 json_line = json.loads(line)
-                original_question_train = json_line["original_question_train"]
-                original_question_test = json_line["original_question_test"]
-                answer_in_steps_train = json_line["answer_in_steps_train"]
-                answer_in_steps_test = json_line["answer_in_steps_test"]
-                generated_answer = json_line["Generation Only"]
+                ques = json_line["original_question_test"]
+                ans = json_line["answer_in_steps_test"]
+                generated_ans = json_line["Generation Only"]
+                ground_truth_correctness = json_line["Correctness"]
 
-                if generated_answer == "True":
-                    generated_answer = "Correct"
-                elif generated_answer == "False":
-                    generated_answer = "Wrong"
+                if ground_truth_correctness == "True":
+                    ground_truth_correctness = "Correct"
+                elif ground_truth_correctness == "False":
+                    ground_truth_correctness = "Wrong"
                 else:
-                    print("Error in generated answer:", generated_answer)
+                    print("Error in generated answer:", ground_truth_correctness)
 
-                # ground_truth_correctness = json_line["Correctness"]
                 retlist.append(
                     {
-                        "question_in_train": original_question_train,
-                        "question_in_test": original_question_test,
-                        "answer_in_steps_train": answer_in_steps_train,
-                        "answer_in_steps_test": answer_in_steps_test,
-                        "generated_answer": generated_answer,
-                        # "ground_truth_correctness": ground_truth_correctness,
+                        "ques": ques,
+                        "ans": ans,
+                        "generated_ans": generated_ans,
+                        "ground_truth_correctness": ground_truth_correctness,
                     }
                 )
-                break
         return retlist
 
 
 if __name__ == "__main__":
-    data_path = "grad_std_llm/log/Mistral-7B-Instruct-v0.2/GSM8K_1-shot_0_log.jsonl"
-    loader = Step2Loader(data_path)
+    data_path = (
+        "/home/kg798/grad_std_llm/data/step1_1-shot/GSM8K_1-shot_final_log.jsonl"
+    )
+    loader = Step2KnowledgeLoader(data_path)
     print(loader.data[0])

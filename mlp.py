@@ -46,12 +46,16 @@ class CustomDataset(Dataset):
 
 def create_dataloaders(jsonl_path, batch_size, train_split=0.8):
     dataset = CustomDataset(jsonl_path)
-    train_size = int(train_split * len(dataset))
-    test_size = len(dataset) - train_size
-    print("Train Instances:", train_size)
-    print("Test Instances:", test_size)
-    train_dataset, test_dataset = random_split(dataset, [train_size, test_size])
-    train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
+    test_path = (
+        "/home/kg798/grad_std_llm/data/step1_1-shot/Hook_GSM8K_1-shot_final_log.jsonl"
+    )
+    test_dataset = CustomDataset(test_path)
+    # train_size = int(train_split * len(dataset))
+    # test_size = len(dataset) - train_size
+    # print("Train Instances:", train_size)
+    # print("Test Instances:", test_size)
+    # train_dataset, test_dataset = random_split(dataset, [train_size, test_size])
+    train_loader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
     test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
 
     return train_loader, test_loader
@@ -117,14 +121,14 @@ class MLP(nn.Module):
 
 if __name__ == "__main__":
     device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
-    jsonl_path = "/home/kg798/grad_std_llm/log/Mistral-7B-Instruct-v0.2/Hook_GSM8K_1-shot_final_log.jsonl"  # 替换为你的 JSONL 文件路径
+    jsonl_path = "/home/kg798/grad_std_llm/log/Mistral-7B-Instruct-v0.2/Hook_GSM8K_step2knowledge-zero-shot_final_log.jsonl"  # 替换为你的 JSONL 文件路径
     batch_size = 4
     train_loader, test_loader = create_dataloaders(jsonl_path, batch_size)
     print("Batch size:", batch_size)
     print("Train loader length:", len(train_loader))
     print("Test loader length:", len(test_loader))
 
-    model = MLP(num_epochs=10, device=device, batch_size=batch_size, lr=0.0015).to(
+    model = MLP(num_epochs=10, device=device, batch_size=batch_size, lr=0.001).to(
         device
     )
     print(model)
