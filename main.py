@@ -17,6 +17,7 @@ if __name__ == "__main__":
     parser = ArgumentParser()
     parser.add_argument("--logdir", type=str, default="")
     """
+    model_name = "mistralai/Mistral-7B-Instruct-v0.2"
 
     # Arguments
     logger = LLMLogger(
@@ -25,15 +26,17 @@ if __name__ == "__main__":
     # print("Logger Initialized:", logger)
 
     model_arguemnts = ModelArguments(
-        model_name_or_path="mistralai/Mistral-7B-Instruct-v0.2",
+        model_name_or_path=model_name,
         device=accelerator.device,
     )
     # print("Model Arguments Initialized:", model_arguemnts)
 
     data_arguments = DataArguments(
-        data_path="./data/GSM8K/test.jsonl",
-        dataloader="GSM8KLoader",
-        constructor="GSM8KConstructor",
+        # data_path=os.getcwd() + "/data/GSM8K/test.jsonl",
+        # split_ratio=0.8,
+        data_path=os.getcwd() + "/data/step1_1-shot/GSM8K_1-shot_final_log.jsonl",
+        dataloader="Step2KnowledgeLoader",
+        constructor="Step2KnowledgeConstructor",
     )
     # print("Data Arguments Initialized:", data_arguments)
 
@@ -41,7 +44,7 @@ if __name__ == "__main__":
     # print("Training Arguments Initialized:", train_eval_arguments)
 
     eval_arguments = EvalArguments(
-        evaluator_name="GSM8K",
+        evaluator_name="Step2KnowledgeEvaluator",
         max_new_tokens=400,
     )
 
