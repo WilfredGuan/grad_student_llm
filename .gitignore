@@ -1,4 +1,7 @@
 /data/GSM8K/*
 /data/step1_1-shot/
+/data/step2_knowledge/
+/data/step3_1-shot+knowledge/
 /log/Mistral-7B-Instruct-v0.2/
 /**/__pycache__/
+/mlp_save/

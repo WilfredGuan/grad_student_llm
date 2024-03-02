@@ -9,33 +9,44 @@ import torch
 import json
 import numpy as np
 from torch.utils.data import Dataset, DataLoader, random_split
+from tqdm import tqdm
+import os
 
 
 class CustomDataset(Dataset):
-    def __init__(self, jsonl_path):
+    def __init__(self, jsonl_path, mode):
         self.data = []
         self.labels = []
-        with open(jsonl_path, "r") as file:
-            for line in file:
-                json_obj = json.loads(line.strip())
-                # 初始化一个空的数组来存储合并后的数据
-                combined_data = np.empty((4096, 64), dtype=np.float32)
-                for i in range(32):
-                    # 提取 self_attn 和 mlp 层的数据
-                    self_attn_data = np.array(
-                        json_obj["outputs"]["last"][
-                            f"model.layers.{i}.self_attn.o_proj"
-                        ]
-                    ).reshape(4096)
-                    mlp_data = np.array(
-                        json_obj["outputs"]["last"][f"model.layers.{i}.mlp"]
-                    ).reshape(4096)
-                    # 按顺序合并到 combined_data 数组
-                    combined_data[:, 2 * i] = self_attn_data
-                    combined_data[:, 2 * i + 1] = mlp_data
-                self.data.append(combined_data)
-                label = 1 if json_obj["result"] == "True" else 0
-                self.labels.append(label)
+        if mode == "step3":
+            with open(jsonl_path, "r") as file:
+                num = 0
+                for line in tqdm(file, desc="Loading Data"):
+                    num += 1
+                    json_obj = json.loads(line.strip())
+                    self.data.append(np.array(json_obj["data"], dtype=np.float32))
+                    self.labels.append(json_obj["label"])
+        else:
+            with open(jsonl_path, "r") as file:
+                for line in file:
+                    json_obj = json.loads(line.strip())
+                    # 初始化一个空的数组来存储合并后的数据
+                    combined_data = np.empty((4096, 64), dtype=np.float32)
+                    for i in range(32):
+                        # 提取 self_attn 和 mlp 层的数据
+                        self_attn_data = np.array(
+                            json_obj["outputs"]["last"][
+                                f"model.layers.{i}.self_attn.o_proj"
+                            ]
+                        ).reshape(4096)
+                        mlp_data = np.array(
+                            json_obj["outputs"]["last"][f"model.layers.{i}.mlp"]
+                        ).reshape(4096)
+                        # 按顺序合并到 combined_data 数组
+                        combined_data[:, 2 * i] = self_attn_data
+                        combined_data[:, 2 * i + 1] = mlp_data
+                    self.data.append(combined_data)
+                    label = 1 if json_obj["result"] == "True" else 0
+                    self.labels.append(label)
 
     def __len__(self):
         return len(self.data)
@@ -44,8 +55,8 @@ class CustomDataset(Dataset):
         return self.data[idx], self.labels[idx]
 
 
-def create_dataloaders(jsonl_path, batch_size, train_split=0.8):
-    dataset = CustomDataset(jsonl_path)
+def create_dataloaders(jsonl_path, batch_size, mode, train_split=0.8):
+    dataset = CustomDataset(jsonl_path, mode)
     train_size = int(train_split * len(dataset))
     test_size = len(dataset) - train_size
     print("Train Instances:", train_size)
@@ -64,7 +75,7 @@ class MLP(nn.Module):
         self.fc1 = nn.Linear(4096 * 64, 1024)  # 第一个全连接层
         self.fc2 = nn.Linear(1024, 256)  # 第二个全连接层
         self.fc3 = nn.Linear(256, 64)  # 第三个全连接层
-        self.fc4 = nn.Linear(64, 2)  # 输出层，输出大小为 2，对应二分类问题
+        self.fc4 = nn.Linear(64, 3)  # 输出层，输出大小为 2，对应二分类问题
 
         self.relu = nn.ReLU()  # 激活函数
 
@@ -114,20 +125,28 @@ class MLP(nn.Module):
         accuracy = 100 * correct / total
         return f"{accuracy:.2f}%"
 
+    def save_model(self, path):
+        torch.save(self.state_dict(), path)
+
+    def load_model(self, path):
+        self.load_state_dict(torch.load(path))
+        self.to(self.device)
+
 
 if __name__ == "__main__":
     device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
-    jsonl_path = "/home/kg798/grad_std_llm/log/Mistral-7B-Instruct-v0.2/Hook_GSM8K_1-shot_final_log.jsonl"  # 替换为你的 JSONL 文件路径
+    jsonl_path = "/home/kg798/grad_std_llm/data/step3_1-shot+knowledge/step3_1-shot+knowledge.jsonl"  # 替换为你的 JSONL 文件路径
     batch_size = 4
-    train_loader, test_loader = create_dataloaders(jsonl_path, batch_size)
-    print("Batch size:", batch_size)
-    print("Train loader length:", len(train_loader))
-    print("Test loader length:", len(test_loader))
+    mode = "step3"
+    train_loader, test_loader = create_dataloaders(jsonl_path, batch_size, mode)
 
-    model = MLP(num_epochs=20, device=device, batch_size=batch_size, lr=0.001).to(
+    model = MLP(num_epochs=10, device=device, batch_size=batch_size, lr=0.001).to(
         device
     )
-    print(model)
     model.train_model(train_loader=train_loader, test_loader=test_loader)
     print("Finished Training")
-    model.test_model(test_loader=test_loader)
+    print("Testing...")
+    print(model.test_model(test_loader=test_loader))
+    print("Saving Model...")
+    model.save_model(os.getcwd() + "/mlp_save/model.pth")
+    model.load_model(os.getcwd() + "/mlp_save/model.pth")

@@ -43,7 +43,7 @@ class DataArguments:
         assert n_shot > 0, "You should set n_shot = n for n-shot construction."
 
     def __post_init__(self):
-        valid_modes = ["0-shot", "n-shot", "cot"]
+        valid_modes = ["zero-shot", "n-shot", "cot"]
         if self.construction_mode not in valid_modes:
             raise ValueError(
                 f"construction_mode must be one of {valid_modes}, got '{self.construction_mode}'"

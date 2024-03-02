@@ -101,7 +101,7 @@ class GSM8KConstructor(Constructor):
         pass
 
 
-class Step2Constructor(Constructor):
+class Step2KnowledgeConstructor(Constructor):
     def __init__(self, data, data_args, *kwargs):
         super().__init__(data=data)
         self.data_args = data_args
@@ -110,19 +110,22 @@ class Step2Constructor(Constructor):
     def _construct(self, data):
         print("Constructing Step 2 data...")
         # template = "You are a math teacher thinking step by step. Your question is: {} \n\n Your final answer must be like this #### NUMBER"
-        ques_template = "You need to understand the following question and a previous answer. According to your knowledge, rethink the question and conclude the given answer is whether #### Correct or #### Wrong.\nQuestion: {}\nAnswer: {}"
-        ans_template = "Rethink the question according to related knowledge. {} So the answer is #### {}."
+        ques_template = "You need to understand the following question and an example answer. According to your knowledge, rethink the and conclude whether the target answer is [Correct] or [Wrong].\nQuestion: {}\nExample Answer: {}\nTarget Answer: {}"
         prompt_list = []
         for sample in data:
-            cot_prompt = ques_template.format(
-                sample["question_in_train"], sample["answer_in_steps_train"]
+            sample["ques"] = sample["ques"][0]
+            sample["ans"] = re.sub(r"####.*$", "", sample["ans"][0])
+            sample["generated_ans"] = re.sub(r"####.*$", "", sample["generated_ans"])
+            prompt = ques_template.format(
+                sample["ques"], sample["ans"], sample["generated_ans"]
             )
-            question = sample["question_in_test"]
             prompt_list.append(
                 {
-                    "prompt": [cot_prompt],
-                    "original_question": [sample["question"]],
-                    "answer": [sample["answer"]],
-                    "answer_in_steps": [sample["answer_in_steps"]],
+                    "prompt": [prompt],
+                    "ques": sample["ques"],
+                    "example_ans": sample["ans"],
+                    "target_ans": sample["generated_ans"],
+                    "ground_truth_correctness": sample["ground_truth_correctness"],
                 }
             )
+        return prompt_list

@@ -1,1 +1,1 @@
-CUDA_VISIBLE_DEVICES=4,5,6,7 python -m accelerate.commands.launch --main_process_port 5432 --config_file acc_config.yaml main.py
+CUDA_VISIBLE_DEVICES=6,7 python -m accelerate.commands.launch --main_process_port 5432 --config_file acc_config.yaml main.py
