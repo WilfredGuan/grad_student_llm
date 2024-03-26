@@ -17,14 +17,15 @@ class CustomDataset(Dataset):
     def __init__(self, jsonl_path, mode):
         self.data = []
         self.labels = []
+        self.original_data = []
         if mode == "step3":
             with open(jsonl_path, "r") as file:
-                num = 0
                 for line in tqdm(file, desc="Loading Data"):
-                    num += 1
+                    # print(line)
                     json_obj = json.loads(line.strip())
                     self.data.append(np.array(json_obj["data"], dtype=np.float32))
                     self.labels.append(json_obj["label"])
+                    self.original_data.append(json_obj["original_data"])
         else:
             with open(jsonl_path, "r") as file:
                 for line in file:
@@ -52,20 +53,24 @@ class CustomDataset(Dataset):
         return len(self.data)
 
     def __getitem__(self, idx):
-        return self.data[idx], self.labels[idx]
+        return self.data[idx], self.labels[idx], self.original_data[idx]
 
 
 def create_dataloaders(jsonl_path, batch_size, mode, train_split=0.8):
-    dataset = CustomDataset(jsonl_path, mode)
-    train_size = int(train_split * len(dataset))
-    test_size = len(dataset) - train_size
-    print("Train Instances:", train_size)
-    print("Test Instances:", test_size)
-    train_dataset, test_dataset = random_split(dataset, [train_size, test_size])
-    train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
-    test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
-
-    return train_loader, test_loader
+    if train_split != 0:
+        dataset = CustomDataset(jsonl_path, mode)
+        train_size = int(train_split * len(dataset))
+        test_size = len(dataset) - train_size
+        print("Train Instances:", train_size)
+        print("Test Instances:", test_size)
+        train_dataset, test_dataset = random_split(dataset, [train_size, test_size])
+        train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
+        test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
+        return train_loader, test_loader
+    else:
+        dataset = CustomDataset(jsonl_path, mode)
+        loader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
+        return loader
 
 
 # 定义 MLP 类
@@ -96,7 +101,7 @@ class MLP(nn.Module):
     def train_model(self, train_loader, test_loader):
         for epoch in range(self.num_epochs):
             total_loss = 0
-            for data, labels in train_loader:
+            for data, labels, _ in train_loader:
                 data, labels = data.to(self.device), labels.to(self.device)
                 self.optimizer.zero_grad()
                 outputs = self(data)
@@ -110,17 +115,39 @@ class MLP(nn.Module):
                 f"Epoch [{epoch+1}/{self.num_epochs}], Loss: {loss.item():.4f}, Test Acc: {test_acc}"
             )
 
-    def test_model(self, test_loader):
+    def test_model(
+        self,
+        test_loader,
+        file_path="3->1_misclassified_samples.jsonl",
+        test_export=False,
+    ):
         self.eval()
         correct = 0
         total = 0
+        if test_export:
+            misclassified_samples = []
         with torch.no_grad():
-            for data, labels in test_loader:
+            for data, labels, original_data in test_loader:
                 data, labels = data.to(self.device), labels.to(self.device)
                 outputs = self(data)
                 _, predicted = torch.max(outputs.data, 1)
                 total += labels.size(0)
                 correct += (predicted == labels).sum().item()
+                if test_export:
+                    misclassified = predicted.item() != labels.item()
+                    # 如果有预测错误的数据
+                    if misclassified:
+                        misclassified_samples.append(
+                            {
+                                "predicted": predicted.item(),
+                                "actual": labels.item(),
+                                "data": original_data,
+                            }
+                        )
+        if test_export:
+            with open(file_path, "w") as f:
+                for item in misclassified_samples:
+                    f.write(json.dumps(item) + "\n")
 
         accuracy = 100 * correct / total
         return f"{accuracy:.2f}%"
@@ -135,18 +162,30 @@ class MLP(nn.Module):
 
 if __name__ == "__main__":
     device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
-    jsonl_path = "/home/kg798/grad_std_llm/data/step3_1-shot+knowledge/step3_1-shot+knowledge.jsonl"  # 替换为你的 JSONL 文件路径
-    batch_size = 4
+    jsonl_path = "/home/kg798/grad_std_llm/data/step1_1-shot/step1_1-shot_dataset.jsonl"  # 替换为你的 JSONL 文件路径
+    batch_size = 1
     mode = "step3"
-    train_loader, test_loader = create_dataloaders(jsonl_path, batch_size, mode)
 
-    model = MLP(num_epochs=10, device=device, batch_size=batch_size, lr=0.001).to(
-        device
-    )
-    model.train_model(train_loader=train_loader, test_loader=test_loader)
-    print("Finished Training")
-    print("Testing...")
-    print(model.test_model(test_loader=test_loader))
-    print("Saving Model...")
-    model.save_model(os.getcwd() + "/mlp_save/model.pth")
-    model.load_model(os.getcwd() + "/mlp_save/model.pth")
+    flag = "train"
+
+    if flag == "train":
+        train_loader, test_loader = create_dataloaders(
+            jsonl_path, batch_size, mode, train_split=0.8
+        )
+        model = MLP(num_epochs=10, device=device, batch_size=batch_size, lr=0.001).to(
+            device
+        )
+        model.train_model(train_loader=train_loader, test_loader=test_loader)
+        print("Finished Training")
+        print("Testing...")
+        print(model.test_model(test_loader=test_loader))
+        print("Saving Model...")
+        model.save_model(os.getcwd() + "/mlp_save/step_1_model.pth")
+
+    if flag == "test":
+        test_loader = create_dataloaders(jsonl_path, batch_size, mode, train_split=0)
+        model = MLP(num_epochs=10, device=device, batch_size=batch_size, lr=0.001).to(
+            device
+        )
+        model.load_model(os.getcwd() + "/mlp_save/model.pth")
+        print(model.test_model(test_loader=test_loader, test_export=True))

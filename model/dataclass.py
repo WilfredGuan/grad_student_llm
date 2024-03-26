@@ -22,19 +22,11 @@ class DataArguments:
     cot, data = train, test
     """
 
-    data_path: str = field(
-        default=None, metadata={"help": "Path to the training data."}
-    )
+    task_mode: str = field(default="step_1")
+
     dataloader: str = field(default="GSM8KLoader")
-    # split_ratio: float = field(default=None)
-    # split_validation: bool = field(default=False)
     train_path: str = field(default=None)
     test_path: str = field(default=None)
-    val_path: str = field(default=None)
-    # if split_ratio is None:
-    #     assert train_path is not None, "Train path or name is required."
-    #     assert test_path is not None, "Test path or name is required."
-    #     assert val_path is not None, "Validation path or name is required."
 
     constructor: str = field(default="GSM8KConstructor")
     construction_mode: str = field(default="zero-shot")
@@ -43,10 +35,15 @@ class DataArguments:
         assert n_shot > 0, "You should set n_shot = n for n-shot construction."
 
     def __post_init__(self):
-        valid_modes = ["zero-shot", "n-shot", "cot"]
+        valid_modes = ["zero-shot", "n-shot"]
         if self.construction_mode not in valid_modes:
             raise ValueError(
                 f"construction_mode must be one of {valid_modes}, got '{self.construction_mode}'"
+            )
+        valid_tasks = ["step_1", "step_2.1", "step_2.2"]
+        if self.task_mode not in valid_tasks:
+            raise ValueError(
+                f"task_mode must be one of {valid_tasks}, got '{self.task_mode}'"
             )
 
 
@@ -77,3 +74,7 @@ class EvalArguments:
     top_p: float = field(default=0.95)
     max_new_tokens: int = field(default=200)
     batch_size: int = field(default=1)
+    if n_samples != 1:
+        if temperature == 0:
+            print("You are setting n_samples > 1 while temperature = 0.")
+        print(f"Setting n_samples = {n_samples}, which may need more time & storage.")

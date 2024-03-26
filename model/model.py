@@ -19,14 +19,17 @@ class ModelBase:
         train_arguments=None,
         eval_arguments=None,
     ):
+        # initializing arguments
         self.model_args = model_arguemnts
         self.data_args = data_arguments
         self.train_args = train_arguments
         self.eval_args = eval_arguments
         self.logger = logger
 
+        # load the model & tokenizer from huggingface
         self.model, self.tokenizer = self._load_from_hf(accelerator)
 
+        # Call the dataloader & constructor(contructing the prompts)
         self.data = eval(self.data_args.dataloader)(data_args=self.data_args).data
         self.constructed_data = eval(self.data_args.constructor)(
             data=self.data, data_args=self.data_args
@@ -43,11 +46,12 @@ class ModelBase:
         if self.eval_args != None:
             self.evaluator = eval(self.eval_args.evaluator_name)(
                 model=self.model,
+                tokenizer=self.tokenizer,
                 data=self.constructed_data,
+                data_args=self.data_args,
                 eval_args=self.eval_args,
                 logger=self.logger,
                 accelerator=accelerator,
-                tokenizer=self.tokenizer,
             )
 
     def model_gen(self, messages):

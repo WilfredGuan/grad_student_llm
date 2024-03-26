@@ -64,25 +64,34 @@ class HumanEval(ModelEvaluatorBase):
         pass
 
 
-class GSM8K(ModelEvaluatorBase):
-    def __init__(self, model, tokenizer, data, eval_args, logger, accelerator):
+class GSM8KEval(ModelEvaluatorBase):
+    def __init__(
+        self, model, tokenizer, data, data_args, eval_args, logger, accelerator
+    ):
         super().__init__(model, tokenizer, data, eval_args, logger, accelerator)
 
         # check data mode
-        if len(data[0]["prompt"]) == 1:
+        self.data = data
+        self.data_args = data_args
+        if self.data_args.construction_mode == "zero-shot":
             self.mode = "zero-shot"
-        if len(data[0]["prompt"]) > 1:
-            self.mode = str(len(data[0]["prompt"]) - 1) + "-shot"
-            self.n = len(data[0]["prompt"]) - 1
+        if self.data_args.construction_mode == "n-shot":
+            self.n = self.data_args.n_shot
+            self.mode = str(self.n) + "-shot"
 
     def _eval(self):
         # split the data into different parts, according to the number of devices
         dp_rank = self.accelerator.process_index
         dp_size = self.accelerator.num_processes
         prompt_split = np.array_split(range(len(self.data)), dp_size)[dp_rank]
+
+        # applying n_samples
         indices = [
             i * self.n_samples + j for i in prompt_split for j in range(self.n_samples)
         ]
+
+        if self.n_samples > 1:
+            prompt_split = [x for x in prompt_split for _ in range(self.n_samples)]
 
         # ------
         # some process control / visualization information
@@ -96,31 +105,36 @@ class GSM8K(ModelEvaluatorBase):
         # each device process a part of the data, per batch
         for idx in range(0, indices_len, self.batch_size):
             """
-            Two kind of construction mode: zero-shot or n-shot/cot (they're the same for GSM8K dataset)
-            input structure: [{"prompt": [prompt], "answer": [answer], "answer_in_steps": [answer_in_steps]}]
-            if len(prompt) == 1
-            then it's zero-shot, you should directly use the prompt and check the answer from "answer"
-            if len(prompt) > 1, then it's n-shot/cot
-            you should use all the prompts to generate a new prompt, user "answer_in_steps" to form chat answers,
-            and check the final answer from "answer"
+            Two kind of construction mode: zero-shot or n-shot
+            zero-shot:
+            input structure: [{
+                    "prompt": prompt,
+                    "question": sample["question"],
+                    "answer": sample["answer"],
+                }, ...]
+
+            n-shot:
+            input structure: [
+                {
+                "n_shot": [{
+                    "prompt": prompt,
+                    "question": sample["question"],
+                    "answer": sample["answer"],
+                }, ...],
+                "prompt": {
+                    "prompt": prompt,
+                    "question": sample["question"],
+                    "answer": sample["answer"],
+                },
+                }, ...]
             """
             prompt_list = []
             prompt_lens = []
             ground_truth_list = []
-
             whole_generation_list = []
             generation_only_list = []
             cleaned_answer_list = []
-
             message_to_tokenizer = []
-
-            # # hook for exporting model outputs, also according to ranks
-            # print("Rank", dp_rank, "reset hooks...")
-            # local_exporter.outputs = {
-            #     "outputs": {"first": {}, "last": {}},
-            #     "result": "",
-            # }
-            # local_exporter.counter = 0
 
             # for each example in the batch
             for example in self.data[indices[idx] : indices[idx] + self.batch_size]:
@@ -129,47 +143,45 @@ class GSM8K(ModelEvaluatorBase):
                 chat_template = []
 
                 # for zero-shot
-                if len(example["prompt"]) == 1:
+                if self.mode == "zero-shot":
                     chat_sample = {"role": "user", "content": ""}
-                    prompt = example["prompt"][0].strip()
+                    prompt = example["prompt"].strip()
                     prompt_list.append(prompt)
                     chat_sample["content"] = prompt
                     # print("example answer:", example["answer"].strip())
                     ground_truth_list.extend(
-                        self._cleanning_output([example["answer"][0].strip()])
+                        self._cleanning_output([example["answer"].strip()])
                     )
                 # for n-shot/cot
                 else:
-                    for i in range(len(example["prompt"]) - 1):
+                    for i in range(self.n):
                         chat_sample_user = {"role": "user", "content": ""}
                         chat_sample_assistant = {"role": "assistant", "content": ""}
+                        # print("example:", example)
 
-                        prompt = example["prompt"][i].strip()
-                        answer_in_steps = example["answer_in_steps_train"][i].strip()
+                        prompt = example["n_shot"][i]["prompt"].strip()
+                        answer = example["n_shot"][i]["answer"].strip()
 
                         chat_sample_user["content"] = prompt
-                        chat_sample_assistant["content"] = answer_in_steps
+                        chat_sample_assistant["content"] = answer
 
                         chat_template.append(chat_sample_user)
                         chat_template.append(chat_sample_assistant)
-                    # since both train / test prompts are in the example["prompt"] list
-                    # we need to add the last prompt, e.g., the test question, to the chat_template
+
                     chat_template.append(
-                        {"role": "user", "content": example["prompt"][-1].strip()}
+                        {"role": "user", "content": example["prompt"]["prompt"].strip()}
                     )
                     # print("chat_template:", chat_template)
                     prompt_list.append(chat_template)
                     ground_truth_list.extend(
-                        self._cleanning_output(
-                            [example["answer_in_steps_test"][-1].strip()]
-                        )
+                        self._cleanning_output([example["prompt"]["answer"].strip()])
                     )
 
                 # before this, we have converted the templates into chat format
                 # all process control variables are already set
                 tmp = self.tokenizer.apply_chat_template(
                     chat_template,
-                    max_length=1024,
+                    max_length=2048,
                     # padding="max_length",
                     truncation=True,
                     return_tensors="pt",
@@ -191,28 +203,40 @@ class GSM8K(ModelEvaluatorBase):
             cleaned_answer_list.extend(self._cleanning_output(generation_only_list))
 
             # log in file
-
+            # processed dataset + answer
             for i in range(self.batch_size):
-                # processed dataset + answer
+                message = {
+                    # for n-shot problems, we have stored all the shots and the prompt in the prompt_list
+                    "prompt": prompt_list[i],
+                    "cleaned_answer": cleaned_answer_list[i],
+                    "ground_truth": ground_truth_list[i],
+                    "generation": generation_only_list[i],
+                    "raw_generation": whole_generation_list[i],
+                }
+                if self.mode == "zero-shot":
+                    message["question"] = example["question"]
+                    message["answer"] = example["answer"]
+                else:
+                    message["n_shot"] = example["n_shot"]
+                    message["prompt"] = example["prompt"]
+
                 self.logger.log_in_jsonl(
-                    name="GSM8K_" + self.mode + "_" + str(dp_rank),
-                    message={
-                        "Prompt": prompt_list[i],
-                        "Cleaned Generation": cleaned_answer_list[i],
-                        "Ground Truth": ground_truth_list[i],
-                        "Generation Only": generation_only_list[i],
-                        "Raw Generation": whole_generation_list[i],
-                        "original_question_train": example["original_question_train"],
-                        "original_question_test": example["original_question_test"],
-                        "answer_in_steps_train": example["answer_in_steps_train"],
-                        "answer_in_steps_test": example["answer_in_steps_test"],
-                    },
+                    name="GSM8K_"
+                    + self.mode
+                    + "_"
+                    + self.data_args.task_mode
+                    + "_"
+                    + str(dp_rank),
+                    message=message,
                 )
+
                 # hook
                 local_exporter.export_to_jsonl(
                     self.logger.get_log_dir()
                     + "/Hook_GSM8K_"
                     + self.mode
+                    + "_"
+                    + self.data_args.task_mode
                     + "_"
                     + str(dp_rank)
                     + "_log.jsonl"
@@ -235,16 +259,6 @@ class GSM8K(ModelEvaluatorBase):
 
     @torch.no_grad()
     def _eval_gen(self, tokenized_input_list, prompt_lens):
-        # leave this to _eval method - it's more flexible when prompts are sliced according to accelerator
-
-        # message = [{"role": "user", "content": message}]
-        # model_inputs = self.tokenizer.apply_chat_template(
-        #     message,
-        #     max_length=1024,
-        #     padding="max_length",
-        #     truncation=True,
-        #     return_tensors="pt",
-        # ).to(self.accelerator.device)
         if self.temperature != 0:
             generated_ids = self.model.generate(
                 input_ids=tokenized_input_list,
@@ -296,8 +310,14 @@ class GSM8K(ModelEvaluatorBase):
         if self.accelerator.is_local_main_process:
             print("Checking correctness...")
             log_dir = self.logger.get_log_dir()
-            log_file_path = log_dir + f"/GSM8K_{self.mode}_final_log.jsonl"
-            hook_file_path = log_dir + f"/Hook_GSM8K_{self.mode}_final_log.jsonl"
+            log_file_path = (
+                log_dir
+                + f"/GSM8K_{self.mode}_{self.data_args.task_mode}_final_log.jsonl"
+            )
+            hook_file_path = (
+                log_dir
+                + f"/Hook_GSM8K_{self.mode}_{self.data_args.task_mode}_final_log.jsonl"
+            )
             log_file = open(log_file_path.replace(" ", ""), "w")
             hook_file = open(hook_file_path.replace(" ", ""), "w")
 
@@ -305,23 +325,63 @@ class GSM8K(ModelEvaluatorBase):
             num_examples = 0
             correct_examples = 0
             for i in range(self.accelerator.num_processes):
-                log_file_i = open(log_dir + f"/GSM8K_{self.mode}_{i}_log.jsonl", "r")
-                hook_file_i = open(
-                    log_dir + f"/Hook_GSM8K_{self.mode}_{i}_log.jsonl", "r"
+                # prepare the final log
+                log_file_i = open(
+                    log_dir
+                    + f"/GSM8K_{self.mode}_{self.data_args.task_mode}_{i}_log.jsonl",
+                    "r",
                 )
-                for line1, line2 in zip(log_file_i, hook_file_i):
-                    num_examples += 1
-                    line1 = json.loads(line1)
-                    line2 = json.loads(line2)
-                    if line1["Cleaned Generation"] == line1["Ground Truth"]:
-                        line1["Correctness"] = "True"
-                        line2["result"] = "True"
-                        correct_examples += 1
-                    else:
-                        line1["Correctness"] = "False"
-                        line2["result"] = "False"
-                    log_file.write(json.dumps(line1) + "\n")
-                    hook_file.write(json.dumps(line2) + "\n")
+                hook_file_i = open(
+                    log_dir
+                    + f"/Hook_GSM8K_{self.mode}_{self.data_args.task_mode}_{i}_log.jsonl",
+                    "r",
+                )
+                # start comparison
+                if self.n_samples > 1:
+                    n_sample_correct = 0
+                    line1_list = []
+                    line2_list = []
+
+                    for line1, line2 in zip(log_file_i, hook_file_i):
+                        num_examples += 1
+                        line1 = json.loads(line1)
+                        line2 = json.loads(line2)
+
+                        if line1["cleaned_answer"] == line1["ground_truth"]:
+                            n_sample_correct += 1
+                            line1["correctness"] = "True"
+                            line2["correctness"] = "True"
+                            correct_examples += 1
+                        else:
+                            line1["correctness"] = "False"
+                            line2["correctness"] = "False"
+
+                        line1_list.append(line1)
+                        line2_list.append(line2)
+
+                        if len(line1_list) == 10:
+                            for line1, line2 in zip(line1_list, line2_list):
+                                line1["avg_correctness"] = n_sample_correct / 10
+                                line2["avg_correctness"] = n_sample_correct / 10
+                                log_file.write(json.dumps(line1) + "\n")
+                                hook_file.write(json.dumps(line2) + "\n")
+                            line1_list = []
+                            line2_list = []
+                            n_sample_correct = 0
+                else:
+                    for line1, line2 in zip(log_file_i, hook_file_i):
+                        num_examples += 1
+                        line1 = json.loads(line1)
+                        line2 = json.loads(line2)
+                        if line1["cleaned_answer"] == line1["ground_truth"]:
+                            line1["correctness"] = "True"
+                            line2["result"] = "True"
+                            correct_examples += 1
+                        else:
+                            line1["Correctness"] = "False"
+                            line2["result"] = "False"
+                        log_file.write(json.dumps(line1) + "\n")
+                        hook_file.write(json.dumps(line2) + "\n")
                 log_file.flush()
                 hook_file.flush()
                 log_file_i.close()
@@ -332,6 +392,15 @@ class GSM8K(ModelEvaluatorBase):
             hook_file.close()
             score = correct_examples / num_examples
             print("Final score:", score)
+            self.log_file.write(
+                f"Task: {self.data_args.task_mode} on GSM8K dataset, {self.mode}\n"
+                + "Final score: "
+                + str(score)
+                + " on "
+                + str(num_examples)
+                + " examples\n"
+            )
+            self.log_file.flush()
 
     def __call__(self, *args: Any, **kwds: Any) -> Any:
         print("start evaluation on GMS8K dataset")

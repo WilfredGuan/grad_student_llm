@@ -16,14 +16,13 @@ if __name__ == "__main__":
     """
     parser = ArgumentParser()
     parser.add_argument("--logdir", type=str, default="")
-    """
-    model_name = "mistralai/Mistral-7B-Instruct-v0.2"
 
-    # Arguments
-    logger = LLMLogger(
-        model_name="Mistral-7B-Instruct-v0.2", log_dir=os.getcwd() + "/log"
-    )
-    # print("Logger Initialized:", logger)
+    Get dataloader name
+    Get dataconstructor name
+    Set correct mode, e.g., step_1, step_2.1, step_2.2
+    """
+
+    model_name = "mistralai/Mistral-7B-Instruct-v0.2"
 
     model_arguemnts = ModelArguments(
         model_name_or_path=model_name,
@@ -34,32 +33,33 @@ if __name__ == "__main__":
     data_arguments = DataArguments(
         # data_path=os.getcwd() + "/data/GSM8K/test.jsonl",
         # split_ratio=0.8,
-        data_path=os.getcwd() + "/data/step1_1-shot/GSM8K_1-shot_final_log.jsonl",
-        dataloader="Step2KnowledgeLoader",
-        constructor="Step2KnowledgeConstructor",
+        task_mode="step_1",
+        train_path=os.getcwd() + "/data/GSM8K/train.jsonl",
+        test_path=os.getcwd() + "/data/GSM8K/test.jsonl",
+        dataloader="GSM8KLoader",
+        constructor="GSM8KConstructor",
+        construction_mode="n-shot",
+        n_shot=1,
     )
     # print("Data Arguments Initialized:", data_arguments)
 
-    # train_arguments = TrainArguments()
-    # print("Training Arguments Initialized:", train_eval_arguments)
-
     eval_arguments = EvalArguments(
-        evaluator_name="Step2KnowledgeEvaluator",
-        max_new_tokens=400,
+        evaluator_name="GSM8KEval", max_new_tokens=400, temperature=1, n_samples=10
     )
+
+    logger = LLMLogger(
+        model_name=model_name.split("/")[1], log_dir=os.getcwd() + "/log"
+    )
+    # print("Logger Initialized:", logger)
 
     # Load Model
     model = ModelBase(
         model_arguemnts=model_arguemnts,
         data_arguments=data_arguments,
-        # train_arguments=train_arguments,
         eval_arguments=eval_arguments,
         logger=logger,
         accelerator=accelerator,
     )
-
-    # train
-    # model.train()
 
     # eval
     model.eval()
